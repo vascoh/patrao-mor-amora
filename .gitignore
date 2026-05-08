@@ -1,0 +1,16 @@
+node_modules
+.next
+out
+.env
+.env.local
+.env.*.local
+.DS_Store
+*.log
+.vercel
+.turbo
+coverage
+.netlify
+*.pem
+.vscode/settings.json
+.claude/
+foto_patrao_mor_amora.png

@@ -1,0 +1,92 @@
+"use client";
+
+import { useState } from "react";
+import type { FaqItem } from "@/services/content";
+
+const FALLBACK: FaqItem[] = [
+  { id: "1", question: "Que documentos preciso para me inscrever?", answer: "Para a maioria dos cursos precisas de: BI/Cartão de Cidadão, certificado médico de aptidão náutica (podemos ajudar a obtê-lo) e, para menores, autorização do encarregado de educação. Para cursos PADI adicionalmente precisas de declaração médica de aptidão para mergulho.", display_order: 0 },
+  { id: "2", question: "Qual a diferença entre Patrão Local e Patrão de Costa?", answer: "O Patrão Local permite navegar até 3 milhas náuticas da costa e em águas interiores. O Patrão de Costa permite navegar até 20 milhas náuticas da costa e requer maiores conhecimentos técnicos em navegação, meteorologia e comunicações. É recomendado para quem pretende fazer viagens mais longas.", display_order: 1 },
+  { id: "3", question: "Os cursos têm aulas online disponíveis?", answer: "Sim! A componente teórica de alguns cursos pode ser feita online com os nossos materiais digitais e aulas em vídeo. A componente prática (manobras, simulações, etc.) é sempre presencial. O curso de Meteorologia Náutica é 100% online.", display_order: 2 },
+  { id: "4", question: "Como funcionam os exames DGRM?", answer: "Os exames são realizados na sede da DGRM e dividem-se em prova escrita (teórica) e prova prática (manobras em embarcação). A nossa escola prepara-te completamente para ambas as componentes. Com 94% de taxa de aprovação, estás em boas mãos.", display_order: 3 },
+  { id: "5", question: "Qual o prazo de validade das habilitações náuticas?", answer: "As habilitações DGRM não têm prazo de validade — são válidas para toda a vida. No entanto, o certificado médico de aptidão náutica tem de ser renovado periodicamente. Para embarcações profissionais há requisitos adicionais de atualização de formação.", display_order: 4 },
+  { id: "6", question: "É possível pagar em prestações?", answer: "Sim! Oferecemos a possibilidade de pagar em 2 a 3 prestações sem juros para a maioria dos cursos. Entra em contacto connosco para discutir a melhor solução para o teu caso. Aceitamos MBWay, transferência bancária e cartão de crédito.", display_order: 5 },
+  { id: "7", question: "Preciso de ter barco para fazer o curso?", answer: "Não! A escola disponibiliza as embarcações necessárias para a componente prática dos cursos. Não precisas de ter barco próprio para frequentar qualquer um dos nossos cursos.", display_order: 6 },
+  { id: "8", question: "A certificação PADI tem validade internacional?", answer: "Sim! O certificado PADI é reconhecido em mais de 180 países e mais de 6.600 centros de mergulho em todo o mundo. É o certificado de mergulho mais reconhecido internacionalmente. Uma vez obtido, é válido para toda a vida.", display_order: 7 }
+];
+
+interface Props {
+  items?: FaqItem[];
+}
+
+export function FAQ({ items }: Props) {
+  const faqItems = items && items.length > 0 ? items : FALLBACK;
+  const [open, setOpen] = useState<string | null>(faqItems[0]?.id ?? null);
+
+  return (
+    <section id="faq" className="section-pad">
+      <div className="container-page">
+        <div className="mx-auto max-w-xl text-center">
+          <span className="section-number">07 / FAQ</span>
+          <div className="tag mx-auto">
+            <span aria-hidden="true">❓</span> Perguntas Frequentes
+          </div>
+          <h2 className="section-title mt-3">Tens Dúvidas?</h2>
+        </div>
+
+        <div className="mx-auto mt-10 grid max-w-3xl gap-3">
+          {faqItems.map((it) => {
+            const isOpen = open === it.id;
+            const btnId = `faq-btn-${it.id}`;
+            const panelId = `faq-panel-${it.id}`;
+
+            return (
+              <div
+                key={it.id}
+                className="overflow-hidden rounded-[14px] border border-[var(--border)] bg-[var(--bg-card)]"
+              >
+                <h3>
+                  <button
+                    id={btnId}
+                    type="button"
+                    onClick={() => setOpen(isOpen ? null : it.id)}
+                    aria-expanded={isOpen}
+                    aria-controls={panelId}
+                    className="flex w-full items-center justify-between gap-3 px-5 py-4 text-left text-base font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[var(--accent)]"
+                  >
+                    <span>{it.question}</span>
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                      aria-hidden="true"
+                      className={`shrink-0 transition ${isOpen ? "rotate-180 text-[var(--accent)]" : ""}`}
+                    >
+                      <polyline points="6 9 12 15 18 9" />
+                    </svg>
+                  </button>
+                </h3>
+
+                <div
+                  id={panelId}
+                  role="region"
+                  aria-labelledby={btnId}
+                  aria-hidden={!isOpen}
+                  className={`grid transition-all duration-300 ${isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}
+                >
+                  <div className="overflow-hidden">
+                    <p className="px-5 pb-5 text-sm text-[var(--text-muted)]">
+                      {it.answer}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}

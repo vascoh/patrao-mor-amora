@@ -1,0 +1,198 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════════ DESIGN TOKENS — PATRÃO MOR AMORA ═══════════════ */
+:root {
+  --bg: #060e1a;
+  --bg-card: #0a1628;
+  --bg-card2: #0e2040;
+  --text: #f8f9fa;
+  --text-muted: #c8cdd8;
+  --text-subtle: #8892a4;
+  --border: rgba(201, 168, 76, 0.15);
+  --border-strong: rgba(201, 168, 76, 0.35);
+  --accent: #c9a84c;
+  --accent-light: #e8c97a;
+  --shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
+  --shadow-gold: 0 0 40px rgba(201, 168, 76, 0.15);
+}
+
+[data-theme="light"] {
+  --bg: #f0f4f8;
+  --bg-card: #ffffff;
+  --bg-card2: #e8eef6;
+  --text: #0a1628;
+  --text-muted: #2d3a4e;
+  --text-subtle: #5a6a7e;
+  --border: rgba(10, 22, 40, 0.1);
+  --border-strong: rgba(10, 22, 40, 0.25);
+  --shadow: 0 8px 40px rgba(0, 0, 0, 0.1);
+  --shadow-gold: 0 0 40px rgba(201, 168, 76, 0.1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Outfit", sans-serif;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: "Cormorant Garamond", serif;
+    line-height: 1.15;
+    font-weight: 600;
+  }
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #060e1a;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #a8882e;
+    border-radius: 3px;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-[1240px] px-6;
+  }
+  .section-pad {
+    @apply py-24 md:py-[100px];
+  }
+  .tag {
+    @apply inline-flex items-center gap-2 rounded-full border border-[var(--border-strong)] bg-[rgba(201,168,76,0.06)] px-3.5 py-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-[var(--accent)];
+  }
+  .section-title {
+    @apply font-serif text-[2.4rem] leading-tight md:text-[3.4rem];
+  }
+  .section-sub {
+    @apply max-w-xl text-[1.05rem] font-light text-[var(--text-muted)];
+  }
+  .section-number {
+    @apply mb-3 block font-mono text-xs uppercase tracking-[0.2em] text-[var(--text-subtle)];
+  }
+  .gold-divider {
+    @apply my-5 h-px w-16 bg-gradient-to-r from-[var(--accent)] to-transparent;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2.5 rounded-lg px-7 py-3.5 text-sm font-semibold tracking-wide transition active:scale-[0.98];
+    /* Visible focus ring for keyboard users on all button variants */
+    &:focus-visible {
+      @apply outline outline-2 outline-offset-2 outline-[var(--accent)];
+    }
+  }
+  .btn-primary {
+    @apply bg-gradient-to-br from-[#c9a84c] to-[#e8c97a] text-[#060e1a] shadow-[0_8px_30px_rgba(201,168,76,0.25)] hover:-translate-y-0.5 hover:shadow-[0_12px_40px_rgba(201,168,76,0.4)];
+  }
+  .btn-outline {
+    @apply border border-[var(--border-strong)] bg-transparent text-[var(--text)] hover:border-[var(--accent)] hover:bg-[rgba(201,168,76,0.08)];
+  }
+  .btn-ghost {
+    @apply bg-transparent text-[var(--text-muted)] hover:text-[var(--accent)];
+  }
+  .btn-wa {
+    @apply bg-[#25D366] text-white hover:-translate-y-0.5 hover:bg-[#1ebe5a] hover:shadow-[0_8px_30px_rgba(37,211,102,0.35)];
+  }
+
+  .card-base {
+    @apply rounded-[20px] border border-[var(--border)] bg-[var(--bg-card)] shadow-[var(--shadow)] backdrop-blur-sm;
+  }
+
+  .field-label {
+    @apply mb-1.5 block text-xs font-semibold uppercase tracking-[0.1em] text-[var(--text-muted)];
+  }
+  .field-input {
+    @apply w-full rounded-md border border-[var(--border)] bg-[var(--bg)] px-4 py-3 text-sm text-[var(--text)] outline-none transition focus:border-[var(--accent)] focus:ring-2 focus:ring-[var(--accent)]/20;
+  }
+  .field-error {
+    @apply mt-1 text-xs font-medium text-rose-400;
+  }
+  .badge {
+    @apply inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[0.65rem] font-bold uppercase tracking-[0.1em];
+  }
+  .badge-hot {
+    @apply bg-rose-500/15 text-rose-300;
+  }
+  .badge-new {
+    @apply bg-emerald-500/15 text-emerald-300;
+  }
+  .badge-dgrm {
+    @apply bg-[rgba(201,168,76,0.12)] text-[var(--accent)] ring-1 ring-[var(--border-strong)];
+  }
+  .badge-padi {
+    @apply bg-blue-500/15 text-blue-300;
+  }
+  .status-pill {
+    @apply inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-semibold;
+  }
+  .status-available {
+    @apply bg-emerald-500/15 text-emerald-300;
+  }
+  .status-few {
+    @apply bg-amber-500/15 text-amber-300;
+  }
+  .status-full {
+    @apply bg-rose-500/15 text-rose-300;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .reveal-fade {
+    @apply animate-fadeUp;
+  }
+}
+
+/* ═══════════════ ACCESSIBILITY ═══════════════ */
+
+/* 1. Remove outline only when mouse is being used — keep it for keyboard nav */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* 2. Respect prefers-reduced-motion (WCAG 2.3.3) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  /* Keep marquee visible but static */
+  .animate-marquee {
+    animation: none !important;
+    overflow-x: auto;
+  }
+}
+
+/* 3. Improved colour contrast for muted text (WCAG AA 4.5:1 on dark bg) */
+[data-theme="dark"] .text-subtle-contrast {
+  color: #9aa3b4;
+}
+
+/* 4. High-contrast focus indicator fallback for Windows High Contrast mode */
+@media (forced-colors: active) {
+  .btn:focus-visible,
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline: 3px solid ButtonText;
+  }
+}
