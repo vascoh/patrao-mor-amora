@@ -2,6 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { getServerClient } from "@/lib/supabase/server";
 import { leadSchema } from "@/lib/validation";
 import { checkRateLimit } from "@/lib/rateLimit";
+import { notifyAdmin } from "@/lib/notify";
 
 export const runtime = "nodejs";
 
@@ -49,6 +50,15 @@ export async function POST(req: NextRequest) {
       { status: 500 }
     );
   }
+
+  void notifyAdmin({
+    type: "lead",
+    name: parsed.data.name,
+    email: parsed.data.email,
+    phone: parsed.data.phone,
+    course_interest: parsed.data.course_interest || undefined,
+    message: parsed.data.message || undefined
+  });
 
   return NextResponse.json({ ok: true });
 }
