@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 
 const features = [
   {
@@ -45,14 +44,15 @@ export function About() {
 
             {/* Caixa da imagem — overflow-hidden apenas aqui */}
             <div className="relative overflow-hidden rounded-2xl border border-[var(--border)] shadow-[var(--shadow)]">
-              <Image
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
                 src="/foto_patrao_mor_amora.png"
                 alt="Escola náutica Patrão Mor Amora — embarcações no porto de Seixal"
                 width={560}
                 height={700}
-                className="block h-auto w-full"
-                priority
-                sizes="(max-width: 1024px) 90vw, 480px"
+                loading="eager"
+                decoding="async"
+                className="block h-auto w-full object-cover"
               />
               {/* Gradiente sobre a imagem */}
               <div className="absolute inset-0 bg-gradient-to-t from-[#03080f]/55 via-transparent to-transparent" />
