@@ -115,15 +115,39 @@ export function Contact({ courses }: { courses: Course[] }) {
               </a>
             </div>
 
-            <div className="mt-6 aspect-video overflow-hidden rounded-[16px] border border-[var(--border)]">
-              <iframe
-                title="Localização Patrão Mor"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3118.7!2d-9.1!3d38.6!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzjCsDM2JzAwLjAiTiA5wrAwNicwMC4wIlc!5e0!3m2!1spt!2spt!4v1234567890"
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="size-full"
-              />
+            <div className="mt-6 overflow-hidden rounded-[16px] border border-[var(--border)] bg-[var(--bg-card)]">
+              <div className="relative h-48 overflow-hidden">
+                <img
+                  src="/images/shared/sea-bg.jpg"
+                  alt="Localização Patrão Mor Amora"
+                  className="h-full w-full object-cover object-center opacity-50"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#03080f]/95 via-[#03080f]/50 to-[#03080f]/30" />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="text-center">
+                    <div className="mb-2 text-3xl">📍</div>
+                    <p className="font-serif text-xl font-light text-white">Amora, Seixal</p>
+                    <p className="mt-1 text-xs uppercase tracking-[0.15em] text-[var(--accent)]">Margem Sul do Tejo</p>
+                  </div>
+                </div>
+              </div>
+              <div className="flex items-center gap-4 p-4">
+                <div className="grid size-10 shrink-0 place-items-center rounded-md bg-[rgba(201,168,76,0.1)] text-lg">
+                  🗺️
+                </div>
+                <div className="text-sm text-[var(--text-muted)]">
+                  <p className="font-semibold text-[var(--text)]">Como chegar</p>
+                  <p>Escola Náutica Patrão Mor · Amora, Seixal · 2840</p>
+                </div>
+                <a
+                  href="https://maps.google.com/?q=Amora+Seixal+Portugal"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="ml-auto shrink-0 rounded-lg border border-[var(--border)] px-3 py-1.5 text-xs font-semibold text-[var(--accent)] hover:border-[var(--accent)] transition-colors"
+                >
+                  Abrir Mapa ↗
+                </a>
+              </div>
             </div>
           </div>
 

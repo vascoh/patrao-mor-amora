@@ -15,13 +15,12 @@ const FILTERS: { key: CourseCategory | "all"; label: string }[] = [
   { key: "formacao", label: "Formação" }
 ];
 
-// Verified Unsplash photo IDs for each category
 const CATEGORY_PHOTOS: Record<CourseCategory, string> = {
-  carta: "https://images.unsplash.com/photo-1541777594744-addc2de9d110?w=600&q=80&auto=format&fit=crop",
-  vela: "https://images.unsplash.com/photo-1587365001066-8263b7061a38?w=600&q=80&auto=format&fit=crop",
-  seguranca: "https://images.unsplash.com/photo-1503200653465-b0a95c5c9816?w=600&q=80&auto=format&fit=crop",
-  mergulho: "https://images.unsplash.com/photo-1608393570755-cb5c47684686?w=600&q=80&auto=format&fit=crop",
-  formacao: "https://images.unsplash.com/photo-1492549310718-a35f83ff1aca?w=600&q=80&auto=format&fit=crop"
+  carta: "/images/courses/carta.jpg",
+  vela: "/images/courses/vela.jpg",
+  seguranca: "/images/courses/seguranca.jpg",
+  mergulho: "/images/courses/mergulho.jpg",
+  formacao: "/images/courses/formacao.jpg"
 };
 
 function levelDots(level: Course["level"]) {

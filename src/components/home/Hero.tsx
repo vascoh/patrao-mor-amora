@@ -10,9 +10,7 @@ const FALLBACK_STATS: SiteStat[] = [
   { id: "4", key: "certifications", value: "9", label: "Certificações", display_order: 3 }
 ];
 
-// Silhouette of sailboat on sea during sunset — Unsplash (verified)
-const HERO_PHOTO =
-  "https://images.unsplash.com/photo-1615642847532-46622fd5a38e?w=1920&q=85&auto=format&fit=crop";
+const HERO_PHOTO = "/images/hero/sailboat-sunset.jpg";
 
 interface Props {
   stats?: SiteStat[];

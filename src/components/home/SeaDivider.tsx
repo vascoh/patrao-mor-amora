@@ -1,9 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-// Verified Unsplash: white boat on body of water during daytime
-const PHOTO =
-  "https://images.unsplash.com/photo-1587365001066-8263b7061a38?w=1920&q=80&auto=format&fit=crop";
+const PHOTO = "/images/shared/sea-bg.jpg";
 
 export function SeaDivider() {
   return (

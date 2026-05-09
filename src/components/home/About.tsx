@@ -41,9 +41,7 @@ const milestones = [
   { year: "2025", title: "2.800+ Alunos", desc: "Mais de 44 anos de excelência a formar navegadores em Portugal." }
 ];
 
-// Verified Unsplash photo — parked boats on water / marina
-const MARINA_PHOTO =
-  "https://images.unsplash.com/photo-1548689572-a7eacaf43534?w=800&q=80&auto=format&fit=crop";
+const MARINA_PHOTO = "/images/about/marina.jpg";
 
 export function About() {
   return (
@@ -65,7 +63,7 @@ export function About() {
             <div className="relative overflow-hidden rounded-2xl border border-[var(--border)] shadow-[var(--shadow)]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/foto_patrao_mor_amora.png"
+                src="/foto_patrao_mor_amora.jpg"
                 alt="Escola náutica Patrão Mor Amora — embarcações no porto de Seixal"
                 width={560}
                 height={700}

@@ -3,9 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 
-// Verified Unsplash: boat on body of water near dock
-const PHOTO =
-  "https://images.unsplash.com/photo-1503200653465-b0a95c5c9816?w=1200&q=75&auto=format&fit=crop";
+const PHOTO = "/images/courses/seguranca.jpg";
 
 export function Newsletter() {
   const [email, setEmail] = useState("");
