@@ -1,6 +1,6 @@
 # TASKS — Patrão Mor Amora
 
-Tracking production-readiness improvements. Last updated: 2026-05-08.
+Tracking production-readiness improvements. Last updated: 2026-05-09.
 
 ## ✅ Completed
 
@@ -53,10 +53,41 @@ Tracking production-readiness improvements. Last updated: 2026-05-08.
 - [x] GitHub Actions CI/CD pipeline
 - [x] Netlify configuration optimized
 
+### Phase 5 — Build Fixes + Type Consolidation (2026-05-09)
+- [x] Fix `getCourseSlugs` guard against missing Supabase env vars at build time
+- [x] Add `export const dynamic = "force-dynamic"` to all opengraph-image.tsx
+- [x] Consolidate BlogPost/FaqItem/Partner/SiteStat/Testimonial types into database.ts
+- [x] Fix `useEffect` missing-deps warning in Testimonials.tsx
+- [x] Fix focus ring CSS (rgba instead of CSS var opacity modifier)
+- [x] Add .eslintrc.json
+
+### Phase 6 — Blog CRUD (2026-05-09)
+- [x] Migration 0003_blog_posts.sql (Supabase table + RLS + seed)
+- [x] `src/services/blog.ts` — Supabase blog service
+- [x] Admin: /admin/blog (list + delete)
+- [x] Admin: /admin/blog/novo (create)
+- [x] Admin: /admin/blog/[id] (edit)
+- [x] BlogPostForm shared component
+- [x] Blog public pages use Supabase with static fallback
+- [x] sitemap.ts uses Supabase blog posts with fallback
+- [x] AdminNav: Blog link added
+
+### Phase 7 — Email Notifications (2026-05-09)
+- [x] Supabase Edge Function `notify-admin` (Deno + Resend API)
+- [x] `src/lib/notify.ts` — fire-and-forget notifyAdmin helper
+- [x] /api/enrollments calls notifyAdmin after successful insert
+- [x] /api/leads calls notifyAdmin after successful insert
+
+### Phase 8 — Analytics + GDPR (2026-05-09)
+- [x] Google Consent Mode v2 (default denied)
+- [x] CookieConsent banner (aceitar/recusar, localStorage)
+- [x] GA4 pageviews only after consent granted
+
 ## 🔲 Backlog
 
-- [ ] Email notifications for enrollments/leads via Supabase Edge Functions
 - [ ] Full test suite (Vitest unit + Playwright e2e)
-- [ ] Blog CRUD in admin panel
 - [ ] WhatsApp Business API integration
-- [ ] Google Analytics 4 + consent banner
+- [ ] Página de Privacidade (/privacidade)
+- [ ] Admin: gestão de Testemunhos, FAQ, Parceiros
+- [ ] Admin: gestão de Site Stats (anos, alunos, aprovação)
+- [ ] Prettier + pre-commit hooks (husky)

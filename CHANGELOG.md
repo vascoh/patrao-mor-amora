@@ -7,6 +7,44 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+---
+
+## [2.0.0] — 2026-05-09 — Production Hardening
+
+### Added
+- Blog CRUD in admin panel (/admin/blog, /admin/blog/novo, /admin/blog/[id])
+- BlogPostForm shared component (create/edit blog posts)
+- Supabase migration 0003_blog_posts (table + RLS + seed from static data)
+- src/services/blog.ts — Supabase blog service with fallback to static data
+- AdminNav: Blog link (✍️)
+- Email notifications via Supabase Edge Function (notify-admin) + Resend API
+- src/lib/notify.ts — fire-and-forget notifyAdmin helper
+- Google Consent Mode v2 (default denied for analytics/ads)
+- CookieConsent banner (accept/deny, localStorage persistence, accessible)
+- tsconfig.json: supabase/functions excluded from TypeScript compilation
+
+### Fixed
+- Build blocker: getCourseSlugs() now returns [] when SUPABASE env vars absent
+- OG image prerender crash on Windows (path with spaces): added dynamic="force-dynamic"
+- Type duplication: Testimonial/FaqItem/Partner/SiteStat/BlogPost consolidated in database.ts
+- content.ts now imports types from database.ts and re-exports
+- useEffect missing deps warning in Testimonials.tsx
+- Focus ring CSS: rgba() instead of CSS var opacity modifier (Tailwind JIT compat)
+- Hero/FAQ/Partners/Testimonials FALLBACK arrays updated to match full DB interface
+
+### Changed
+- lib/blog.ts: interface migrated to use published_at/read_time (matching database.ts)
+- seo.ts: uses BlogPost from @/types/database; buildArticleJsonLd uses published_at
+- blog/page.tsx: async, fetches Supabase with fallback; uses published_at/read_time
+- blog/[slug]/page.tsx: async, fetches Supabase with fallback; revalidate=60
+- Blog.tsx (home): accepts posts prop from page.tsx
+- page.tsx: fetches blogPosts and passes to Blog component
+- sitemap.ts: uses Supabase blog with fallback; updated_at for lastModified
+
+---
+
+## [1.4.0] — 2026-05-08 — Security + Admin + Content + CI/CD
+
 ### Added
 - Rate limiting middleware for API routes (enrollments + leads)
 - Content-Security-Policy and additional security headers
