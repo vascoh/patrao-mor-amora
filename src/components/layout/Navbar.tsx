@@ -96,6 +96,30 @@ export function Navbar() {
                 {l.label}
               </Link>
             ))}
+            <span aria-hidden="true" className="mx-1 h-4 w-px bg-[var(--border-strong)]" />
+            <a
+              href="https://www.patraomor.pt/pt/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 rounded-md px-3.5 py-2 text-[var(--accent)] transition hover:text-[var(--accent-light)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
+            >
+              <span>Oeiras</span>
+              <svg
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                width="11"
+                height="11"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="opacity-60"
+              >
+                <path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+              </svg>
+            </a>
           </div>
 
           <div className="flex shrink-0 items-center gap-2">
@@ -157,6 +181,30 @@ export function Navbar() {
               {l.label}
             </Link>
           ))}
+          <a
+            href="https://www.patraomor.pt/pt/"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setOpen(false)}
+            className="flex items-center justify-between rounded-[10px] border border-[var(--border-strong)] bg-[rgba(201,168,76,0.06)] px-5 py-4 text-[var(--accent)] transition hover:bg-[rgba(201,168,76,0.12)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
+          >
+            <span className="font-medium">Patrão Mor Oeiras</span>
+            <svg
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="opacity-70"
+            >
+              <path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+            </svg>
+          </a>
           <Link
             href="/#contacto"
             onClick={() => setOpen(false)}
