@@ -5,6 +5,7 @@ import { MobileCTA } from "@/components/layout/MobileCTA";
 import { Hero } from "@/components/home/Hero";
 import { About } from "@/components/home/About";
 import { Courses } from "@/components/home/Courses";
+import { SeaDivider } from "@/components/home/SeaDivider";
 import { Calendar } from "@/components/home/Calendar";
 import { Simulator } from "@/components/home/Simulator";
 import { Testimonials } from "@/components/home/Testimonials";
@@ -14,8 +15,6 @@ import { Blog } from "@/components/home/Blog";
 import { Partners } from "@/components/home/Partners";
 import { Newsletter } from "@/components/home/Newsletter";
 import { WhatsAppFloat } from "@/components/shared/WhatsAppFloat";
-// PromoPopup desactivado temporariamente (campanha de verão encerrada)
-// import { PromoPopup } from "@/components/shared/PromoPopup";
 import { getCourses } from "@/services/courses";
 import { getUpcomingDates } from "@/services/courseDates";
 import {
@@ -48,6 +47,7 @@ export default async function HomePage() {
         <Hero stats={siteStats} />
         <About />
         <Courses courses={courses} />
+        <SeaDivider />
         <Calendar dates={dates} />
         <Simulator />
         <Testimonials items={testimonials} />
@@ -60,7 +60,6 @@ export default async function HomePage() {
       <Footer />
       <WhatsAppFloat />
       <MobileCTA />
-      {/* <PromoPopup /> */}
     </>
   );
 }

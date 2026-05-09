@@ -1,6 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
+
+// Verified Unsplash: boat on body of water near dock
+const PHOTO =
+  "https://images.unsplash.com/photo-1503200653465-b0a95c5c9816?w=1200&q=75&auto=format&fit=crop";
 
 export function Newsletter() {
   const [email, setEmail] = useState("");
@@ -9,7 +14,6 @@ export function Newsletter() {
   function submit(e: React.FormEvent) {
     e.preventDefault();
     if (!email) return;
-    // Persistido como lead com source=newsletter
     fetch("/api/leads", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -26,19 +30,37 @@ export function Newsletter() {
   }
 
   return (
-    <section className="bg-gradient-to-r from-[#0a1628] via-[#0e2040] to-[#0a1628] py-14">
-      <div className="container-page">
-        <div className="grid items-center gap-6 md:grid-cols-2">
+    <section className="relative overflow-hidden py-20">
+      {/* Background photo */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src={PHOTO}
+          alt=""
+          fill
+          className="object-cover object-center"
+          sizes="100vw"
+        />
+      </div>
+      <div className="absolute inset-0 z-[1] bg-gradient-to-r from-[#060e1a]/97 via-[#0a1628]/90 to-[#060e1a]/85" />
+
+      <div className="container-page relative z-[2]">
+        <div className="grid items-center gap-8 md:grid-cols-2">
           <div>
-            <h3 className="font-serif text-3xl">Recebe novidades e promoções</h3>
-            <p className="mt-1 text-sm text-[var(--text-muted)]">
+            <div className="tag">Novidades Náuticas</div>
+            <h3 className="mt-4 font-serif text-3xl">
+              Recebe novidades
+              <br />
+              <em className="font-light italic text-[var(--accent-light)]">e promoções</em>
+            </h3>
+            <div className="gold-divider" />
+            <p className="text-sm text-[var(--text-muted)]">
               Sê o primeiro a saber das novas datas, ofertas especiais e artigos
               sobre náutica.
             </p>
           </div>
           {done ? (
-            <p className="text-sm font-semibold text-[var(--accent-light)]">
-              ✅ Subscrito com sucesso. Obrigado!
+            <p className="font-serif text-xl font-light italic text-[var(--accent-light)]">
+              Subscrito com sucesso. Obrigado!
             </p>
           ) : (
             <form
@@ -51,7 +73,7 @@ export function Newsletter() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="O teu melhor email"
                 required
-                className="field-input"
+                className="field-input flex-1"
               />
               <button type="submit" className="btn btn-primary">
                 Subscrever

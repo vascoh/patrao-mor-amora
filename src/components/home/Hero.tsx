@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { whatsappLink } from "@/lib/whatsapp";
 import type { SiteStat } from "@/services/content";
@@ -8,6 +9,10 @@ const FALLBACK_STATS: SiteStat[] = [
   { id: "3", key: "approval_rate", value: "94%", label: "Taxa de Aprovação", display_order: 2 },
   { id: "4", key: "certifications", value: "9", label: "Certificações", display_order: 3 }
 ];
+
+// Silhouette of sailboat on sea during sunset — Unsplash (verified)
+const HERO_PHOTO =
+  "https://images.unsplash.com/photo-1615642847532-46622fd5a38e?w=1920&q=85&auto=format&fit=crop";
 
 interface Props {
   stats?: SiteStat[];
@@ -21,35 +26,42 @@ export function Hero({ stats }: Props) {
       id="hero"
       className="relative flex min-h-screen items-center overflow-hidden"
     >
-      <div className="absolute inset-0 z-0 bg-gradient-to-br from-[#03080f] via-[#0a1628] to-[#152e5a]">
-        <svg
-          className="absolute bottom-0 left-0 right-0 opacity-20"
-          viewBox="0 0 1440 200"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M0,100 C240,160 480,40 720,100 C960,160 1200,40 1440,100 L1440,200 L0,200 Z"
-            fill="var(--accent)"
-          />
-          <path
-            d="M0,130 C360,70 720,180 1080,80 C1260,40 1380,120 1440,100 L1440,200 L0,200 Z"
-            fill="var(--accent)"
-            opacity="0.4"
-          />
-        </svg>
+      {/* Photography background */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src={HERO_PHOTO}
+          alt=""
+          fill
+          priority
+          quality={85}
+          className="object-cover object-[50%_55%]"
+          sizes="100vw"
+        />
       </div>
-      <div className="absolute inset-0 z-[1] bg-gradient-to-br from-[rgba(3,8,15,0.85)] via-[rgba(6,14,26,0.7)] to-[rgba(10,22,40,0.5)]" />
-      <div className="absolute bottom-0 left-0 right-0 z-[2] h-48 bg-gradient-to-t from-[var(--bg)] to-transparent" />
-      <div className="absolute inset-x-0 top-0 z-[3] h-[3px] bg-gradient-to-r from-transparent via-[var(--accent)] to-transparent" />
 
-      <div className="container-page relative z-[4] pt-28 md:pt-20">
+      {/* Layered overlays: directional + vertical */}
+      <div className="absolute inset-0 z-[1] bg-gradient-to-r from-[#03080f]/95 via-[#03080f]/72 to-[#060e1a]/15" />
+      <div className="absolute inset-0 z-[1] bg-gradient-to-t from-[#03080f]/70 via-transparent to-[#03080f]/45" />
+
+      {/* Bottom blend into next section */}
+      <div className="absolute bottom-0 inset-x-0 z-[2] h-56 bg-gradient-to-t from-[var(--bg)] to-transparent" />
+
+      {/* Gold accent line at top */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 top-0 z-[3] h-[2px] bg-gradient-to-r from-transparent via-[var(--accent)] to-transparent opacity-50"
+      />
+
+      <div className="container-page relative z-[4] pt-32 pb-20 md:pt-24">
         <div className="max-w-3xl">
+          {/* Badge */}
           <div className="inline-flex items-center gap-2 rounded-full border border-[var(--border-strong)] bg-[rgba(201,168,76,0.08)] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--accent)]">
             <span className="size-1.5 animate-pulse rounded-full bg-[var(--accent-light)]" />
             Escola Certificada DGRM · Desde 1981
           </div>
 
-          <h1 className="mt-6 font-serif text-[3rem] leading-[1.05] md:text-[5.2rem]">
+          {/* Headline */}
+          <h1 className="mt-6 font-serif text-[3rem] leading-[1.04] md:text-[5rem]">
             Aprende a<br />
             <em className="font-light italic text-[var(--accent-light)]">
               Navegar
@@ -59,19 +71,20 @@ export function Hero({ stats }: Props) {
             Segurança
           </h1>
 
-          <p className="mt-6 font-serif text-xl italic text-[var(--accent-light)]">
+          <p className="mt-5 font-serif text-lg italic text-[var(--accent-light)]/90 md:text-xl">
             Cursos Náuticos Certificados · Amora, Margem Sul
           </p>
 
-          <p className="mt-4 max-w-xl text-base font-light text-[var(--text-muted)]">
+          <p className="mt-4 max-w-[520px] text-base font-light leading-relaxed text-[var(--text-muted)]">
             A escola náutica de referência na margem sul do Tejo. Formação
             certificada pela DGRM, instrutores com mais de 20 anos de
             experiência e a maior taxa de aprovação da região.
           </p>
 
-          <div className="mt-8 flex flex-wrap gap-3">
+          {/* CTAs */}
+          <div className="mt-9 flex flex-wrap gap-3">
             <Link href="/#cursos" className="btn btn-primary">
-              ⚓ Ver Cursos
+              Ver Cursos
             </Link>
             <a
               href={whatsappLink(
@@ -81,26 +94,38 @@ export function Hero({ stats }: Props) {
               rel="noopener noreferrer"
               className="btn btn-wa"
             >
-              💬 Contactar via WhatsApp
+              Contactar via WhatsApp
             </a>
-            <Link href="/admin/login" className="btn btn-outline">
-              🔐 Área Admin
+            <Link href="/#sobre" className="btn btn-outline">
+              Conhecer a Escola
             </Link>
           </div>
 
-          <div className="mt-14 grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-8">
+          {/* Stats */}
+          <div className="mt-16 grid grid-cols-2 gap-5 md:grid-cols-4 md:gap-10">
             {displayStats.map((s) => (
-              <div key={s.key} className="border-l border-[var(--border-strong)] pl-4">
-                <div className="font-serif text-3xl font-bold text-[var(--accent-light)] md:text-4xl">
+              <div key={s.key} className="border-l-2 border-[var(--accent)]/40 pl-4">
+                <div className="font-serif text-3xl font-bold text-[var(--accent-light)] md:text-[2.6rem] leading-none">
                   {s.value}
                 </div>
-                <div className="text-xs uppercase tracking-[0.12em] text-[var(--text-muted)]">
+                <div className="mt-1.5 text-[0.67rem] uppercase tracking-[0.13em] text-[var(--text-subtle)]">
                   {s.label}
                 </div>
               </div>
             ))}
           </div>
         </div>
+      </div>
+
+      {/* Scroll indicator */}
+      <div
+        aria-hidden="true"
+        className="absolute bottom-8 left-1/2 z-[4] hidden -translate-x-1/2 flex-col items-center gap-2 md:flex"
+      >
+        <span className="text-[0.58rem] uppercase tracking-[0.22em] text-[var(--text-subtle)]">
+          Explorar
+        </span>
+        <div className="h-10 w-px animate-pulse bg-gradient-to-b from-[var(--accent)]/60 to-transparent" />
       </div>
     </section>
   );
