@@ -14,7 +14,8 @@ import { Blog } from "@/components/home/Blog";
 import { Partners } from "@/components/home/Partners";
 import { Newsletter } from "@/components/home/Newsletter";
 import { WhatsAppFloat } from "@/components/shared/WhatsAppFloat";
-import { PromoPopup } from "@/components/shared/PromoPopup";
+// PromoPopup desactivado temporariamente (campanha de verão encerrada)
+// import { PromoPopup } from "@/components/shared/PromoPopup";
 import { getCourses } from "@/services/courses";
 import { getUpcomingDates } from "@/services/courseDates";
 import {
@@ -59,7 +60,7 @@ export default async function HomePage() {
       <Footer />
       <WhatsAppFloat />
       <MobileCTA />
-      <PromoPopup />
+      {/* <PromoPopup /> */}
     </>
   );
 }

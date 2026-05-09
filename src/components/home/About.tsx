@@ -31,26 +31,45 @@ export function About() {
   return (
     <section id="sobre" className="section-pad">
       <div className="container-page">
-        <div className="grid items-center gap-10 md:grid-cols-2">
-          <div className="relative max-w-md w-full overflow-hidden rounded-[20px] border border-[var(--border)] shadow-[var(--shadow)]">
-            <Image
-              src="/foto_patrao_mor_amora.png"
-              alt="Escola náutica Patrão Mor Amora — embarcações no porto de Seixal"
-              width={400}
-              height={500}
-              className="w-full object-cover"
-              style={{ display: "block" }}
-              priority
+
+        {/* ── Grelha principal: imagem | texto ── */}
+        <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
+
+          {/* Coluna da imagem */}
+          <div className="relative mx-auto w-full max-w-[480px] pb-6 pr-6 lg:mx-0">
+            {/* Brilho decorativo atrás */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -inset-6 rounded-3xl bg-gradient-to-br from-[rgba(201,168,76,0.07)] to-transparent blur-2xl"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#03080f]/60 to-transparent" />
-            <div className="absolute -bottom-5 -right-5 grid size-28 place-items-center rounded-2xl bg-gradient-to-br from-[#c9a84c] to-[#e8c97a] text-center text-[#060e1a] shadow-xl">
+
+            {/* Caixa da imagem — overflow-hidden apenas aqui */}
+            <div className="relative overflow-hidden rounded-2xl border border-[var(--border)] shadow-[var(--shadow)]">
+              <Image
+                src="/foto_patrao_mor_amora.png"
+                alt="Escola náutica Patrão Mor Amora — embarcações no porto de Seixal"
+                width={560}
+                height={700}
+                className="block h-auto w-full"
+                priority
+                sizes="(max-width: 1024px) 90vw, 480px"
+              />
+              {/* Gradiente sobre a imagem */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#03080f]/55 via-transparent to-transparent" />
+            </div>
+
+            {/* Badge do ano — fora do overflow:hidden, posicionado no wrapper */}
+            <div className="absolute bottom-0 right-0 grid size-28 place-items-center rounded-2xl bg-gradient-to-br from-[#c9a84c] to-[#e8c97a] text-center text-[#060e1a] shadow-xl">
               <div>
-                <strong className="block font-serif text-3xl font-bold">1981</strong>
-                <span className="text-xs font-semibold uppercase tracking-[0.1em]">Fundada</span>
+                <strong className="block font-serif text-3xl font-bold leading-none">1981</strong>
+                <span className="mt-1 block text-[0.62rem] font-semibold uppercase tracking-[0.12em]">
+                  Fundada
+                </span>
               </div>
             </div>
           </div>
 
+          {/* Coluna de texto */}
           <div>
             <span className="section-number">01 / Sobre Nós</span>
             <div className="tag">⚓ A Nossa História</div>
@@ -66,13 +85,13 @@ export function About() {
               segurança e paixão pelo mar.
             </p>
 
-            <div className="mt-8 flex flex-col gap-5">
+            <div className="mt-8 flex flex-col gap-4">
               {features.map((f) => (
                 <div
                   key={f.title}
-                  className="flex gap-4 rounded-[12px] border border-[var(--border)] bg-[var(--bg-card)]/40 p-4"
+                  className="flex gap-4 rounded-xl border border-[var(--border)] bg-[var(--bg-card)]/40 p-4 transition-colors hover:border-[var(--border-strong)] hover:bg-[var(--bg-card)]/60"
                 >
-                  <div className="grid size-12 shrink-0 place-items-center rounded-md bg-[rgba(201,168,76,0.1)] text-2xl">
+                  <div className="grid size-12 shrink-0 place-items-center rounded-lg bg-[rgba(201,168,76,0.1)] text-2xl">
                     {f.icon}
                   </div>
                   <div>
@@ -83,7 +102,7 @@ export function About() {
               ))}
             </div>
 
-            <div className="mt-7 flex flex-wrap gap-3">
+            <div className="mt-8 flex flex-wrap gap-3">
               <Link href="/#cursos" className="btn btn-primary">
                 Ver Todos os Cursos
               </Link>
@@ -91,16 +110,17 @@ export function About() {
           </div>
         </div>
 
+        {/* ── Marcos históricos ── */}
         <div className="mt-24">
           <div className="text-center">
             <div className="tag mx-auto">📅 A Nossa Jornada</div>
             <h3 className="mt-4 font-serif text-3xl">Marcos Históricos</h3>
           </div>
-          <div className="mt-10 grid gap-6 md:grid-cols-5">
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
             {milestones.map((m) => (
               <div
                 key={m.year}
-                className="rounded-[12px] border border-[var(--border)] bg-[var(--bg-card)]/40 p-5"
+                className="rounded-xl border border-[var(--border)] bg-[var(--bg-card)]/40 p-5 transition-colors hover:border-[var(--border-strong)]"
               >
                 <div className="inline-flex rounded-full bg-gradient-to-br from-[#c9a84c] to-[#e8c97a] px-3 py-1 font-mono text-xs font-bold text-[#060e1a]">
                   {m.year}
@@ -111,6 +131,7 @@ export function About() {
             ))}
           </div>
         </div>
+
       </div>
     </section>
   );
