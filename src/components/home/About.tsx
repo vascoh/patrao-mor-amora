@@ -32,14 +32,15 @@ export function About() {
     <section id="sobre" className="section-pad">
       <div className="container-page">
         <div className="grid items-center gap-10 md:grid-cols-2">
-          <div className="relative aspect-[4/5] max-w-md overflow-hidden rounded-[20px] border border-[var(--border)] shadow-[var(--shadow)]">
+          <div className="relative max-w-md w-full overflow-hidden rounded-[20px] border border-[var(--border)] shadow-[var(--shadow)]">
             <Image
               src="/foto_patrao_mor_amora.png"
               alt="Escola náutica Patrão Mor Amora — embarcações no porto de Seixal"
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, 400px"
-              priority={false}
+              width={400}
+              height={500}
+              className="w-full object-cover"
+              style={{ display: "block" }}
+              priority
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#03080f]/60 to-transparent" />
             <div className="absolute -bottom-5 -right-5 grid size-28 place-items-center rounded-2xl bg-gradient-to-br from-[#c9a84c] to-[#e8c97a] text-center text-[#060e1a] shadow-xl">
