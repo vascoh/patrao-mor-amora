@@ -1,11 +1,13 @@
 import type { MetadataRoute } from "next";
 import { getCourseSlugs } from "@/services/courses";
-import { blogPosts } from "@/lib/blog";
+import { getBlogPosts } from "@/services/blog";
+import { blogPosts as staticPosts } from "@/lib/blog";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://patraomor.pt";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const courseSlugs = await getCourseSlugs();
+  const [courseSlugs, dbPosts] = await Promise.all([getCourseSlugs(), getBlogPosts()]);
+  const posts = dbPosts.length > 0 ? dbPosts : staticPosts;
 
   const courseEntries: MetadataRoute.Sitemap = courseSlugs.map((slug) => ({
     url: `${siteUrl}/cursos/${slug}`,
@@ -14,9 +16,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8
   }));
 
-  const blogEntries: MetadataRoute.Sitemap = blogPosts.map((p) => ({
+  const blogEntries: MetadataRoute.Sitemap = posts.map((p) => ({
     url: `${siteUrl}/blog/${p.slug}`,
-    lastModified: new Date(),
+    lastModified: new Date(p.updated_at),
     changeFrequency: "monthly",
     priority: 0.6
   }));

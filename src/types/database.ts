@@ -117,6 +117,22 @@ export interface SiteStat {
   display_order: number;
 }
 
+export interface BlogPost {
+  id: string;
+  slug: string;
+  title: string;
+  excerpt: string;
+  content: string;
+  tag: string;
+  icon: string;
+  read_time: string;
+  published_at: string;
+  is_published: boolean;
+  display_order: number;
+  created_at: string;
+  updated_at: string;
+}
+
 export interface CourseDateWithCourse extends CourseDate {
   course: Pick<Course, "id" | "slug" | "name" | "category" | "icon"> | null;
 }
@@ -139,6 +155,7 @@ export interface Database {
       faq_items: TableShape<FaqItem, "question" | "answer">;
       partners: TableShape<Partner, "name">;
       site_stats: TableShape<SiteStat, "key" | "value" | "label">;
+      blog_posts: TableShape<BlogPost, "slug" | "title" | "excerpt" | "content">;
     };
     Views: { [_ in never]: never };
     Functions: { [_ in never]: never };

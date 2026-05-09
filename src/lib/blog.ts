@@ -1,26 +1,14 @@
-export interface BlogPost {
-  icon: string;
-  tag: string;
-  date: string;
-  isoDate: string;
-  read: string;
-  title: string;
-  excerpt: string;
-  slug: string;
-  content: string;
-}
+import type { BlogPost } from "@/types/database";
+
+export type { BlogPost };
 
 export const blogPosts: BlogPost[] = [
   {
-    icon: "🗺️",
-    tag: "Navegação",
-    date: "12 Mai 2025",
-    isoDate: "2025-05-12",
-    read: "5 min",
+    id: "static-1",
+    slug: "como-ler-carta-nautica",
     title: "Como Ler uma Carta Náutica: Guia Completo para Iniciantes",
     excerpt:
       "Aprender a ler uma carta náutica é uma das competências mais importantes para qualquer navegador. Neste guia explicamos simbologia, escalas, sondas e muito mais.",
-    slug: "como-ler-carta-nautica",
     content: `
 Uma carta náutica é o mapa do navegador. Ao contrário dos mapas terrestres, as cartas náuticas contêm informação essencial para a navegação segura no mar: profundidades, perigos submersos, balizamento, correntes e muito mais.
 
@@ -34,33 +22,35 @@ Os números espalhados pela carta indicam profundidades em metros (ou braças em
 
 ### Balizamento
 O sistema IALA-A (utilizado em Portugal e Europa) define:
-- **Balizas laterais**: vermelhas (boreste) e verdes (bombordo) para canais navegáveis
-- **Balizas cardeais**: indicam o lado seguro para passar um obstáculo
-- **Balizas de isolado perigoso**: marcam um obstáculo isolado
+- Balizas laterais: vermelhas (boreste) e verdes (bombordo) para canais navegáveis
+- Balizas cardeais: indicam o lado seguro para passar um obstáculo
+- Balizas de isolado perigoso: marcam um obstáculo isolado
 
 ### Símbolos de Perigo
-- **Ancora**: fundeadouro autorizado
-- **+**: obstáculo com profundidade conhecida
-- **Asterisco (*)**: rocha ao nível do mar ou a descoberto
-- **Círculo com ponto**: baixio perigoso
+- Ancora: fundeadouro autorizado
+- +: obstáculo com profundidade conhecida
+- Asterisco (*): rocha ao nível do mar ou a descoberto
+- Círculo com ponto: baixio perigoso
 
 ## Como Praticar
 
 A melhor forma de aprender a ler cartas náuticas é praticar com cartas reais do Tejo e costa portuguesa. No curso de Patrão Local da Escola Náutica Patrão Mor, dedicamos várias sessões à leitura de cartas e ao traçado de rumos.
-
-Inscreve-te hoje e aprende com os melhores instrutores da margem sul.
-    `.trim()
+    `.trim(),
+    tag: "Navegação",
+    icon: "🗺️",
+    read_time: "5 min",
+    published_at: "2025-05-12",
+    is_published: true,
+    display_order: 0,
+    created_at: "2025-05-12T00:00:00Z",
+    updated_at: "2025-05-12T00:00:00Z"
   },
   {
-    icon: "🌦️",
-    tag: "Meteorologia",
-    date: "05 Mai 2025",
-    isoDate: "2025-05-05",
-    read: "7 min",
+    id: "static-2",
+    slug: "meteorologia-maritima",
     title: "Meteorologia Marítima: Como Interpretar Previsões",
     excerpt:
       "Saber interpretar um boletim meteorológico marítimo pode salvar vidas. Explicamos os conceitos essenciais que todo o navegador deve conhecer.",
-    slug: "meteorologia-maritima",
     content: `
 A meteorologia marítima é uma das disciplinas mais importantes para qualquer navegador. Uma má interpretação das condições meteorológicas pode transformar um passeio tranquilo numa situação perigosa.
 
@@ -75,10 +65,10 @@ A Autoridade Marítima Nacional transmite avisos meteorológicos nos canais VHF 
 ## Conceitos Fundamentais
 
 ### Força do Vento (Escala de Beaufort)
-- **Força 0-3**: Condições ideais para navegação recreativa
-- **Força 4-5**: Requer experiência e embarcação adequada
-- **Força 6+**: Condições adversas — evite sair sem experiência suficiente
-- **Força 8+**: Temporal — permaneça em porto
+- Força 0-3: Condições ideais para navegação recreativa
+- Força 4-5: Requer experiência e embarcação adequada
+- Força 6+: Condições adversas — evite sair sem experiência suficiente
+- Força 8+: Temporal — permaneça em porto
 
 ### Depressões e Anticiclones
 Uma depressão (baixa pressão) traz normalmente vento forte e mau tempo. Um anticiclone (alta pressão) está associado a tempo estável e vento fraco ou moderado.
@@ -87,22 +77,23 @@ Uma depressão (baixa pressão) traz normalmente vento forte e mau tempo. Um ant
 O nevoeiro é um dos maiores perigos para a navegação costeira portuguesa, especialmente no verão. Reduza a velocidade, emita os sinais sonoros adequados e use o radar ou AIS se disponível.
 
 ## Regra de Ouro
-
-**Se tiver dúvidas sobre as condições meteorológicas, não saia.** É sempre melhor adiar uma saída do que enfrentar condições para as quais não está preparado.
-
-Nos nossos cursos abordamos em detalhe a meteorologia marítima e a interpretação de boletins. Inscreve-te e navega com confiança.
-    `.trim()
+Se tiver dúvidas sobre as condições meteorológicas, não saia. É sempre melhor adiar uma saída do que enfrentar condições para as quais não está preparado.
+    `.trim(),
+    tag: "Meteorologia",
+    icon: "🌦️",
+    read_time: "7 min",
+    published_at: "2025-05-05",
+    is_published: true,
+    display_order: 1,
+    created_at: "2025-05-05T00:00:00Z",
+    updated_at: "2025-05-05T00:00:00Z"
   },
   {
-    icon: "📋",
-    tag: "Exames DGRM",
-    date: "28 Abr 2025",
-    isoDate: "2025-04-28",
-    read: "10 min",
+    id: "static-3",
+    slug: "10-dicas-patrao-local",
     title: "10 Dicas para Passar no Exame de Patrão Local à Primeira",
     excerpt:
       "Com base na experiência de mais de 2.800 alunos formados, partilhamos as dicas mais eficazes para garantir aprovação no exame teórico e prático do DGRM.",
-    slug: "10-dicas-patrao-local",
     content: `
 Com mais de 44 anos de experiência e 2.800+ alunos formados, a Escola Náutica Patrão Mor tem um segredo: preparação sistemática e confiança. Aqui estão as 10 dicas que os nossos instrutores partilham com todos os alunos.
 
@@ -149,7 +140,15 @@ Se seguiste as aulas e estudaste, estás preparado. Confia no trabalho que fizes
 ---
 
 A taxa de aprovação dos alunos da Escola Patrão Mor é de 94%. Inscreve-te hoje e faz parte desta estatística.
-    `.trim()
+    `.trim(),
+    tag: "Exames DGRM",
+    icon: "📋",
+    read_time: "10 min",
+    published_at: "2025-04-28",
+    is_published: true,
+    display_order: 2,
+    created_at: "2025-04-28T00:00:00Z",
+    updated_at: "2025-04-28T00:00:00Z"
   }
 ];
 

@@ -23,18 +23,20 @@ import {
   getPartners,
   getSiteStats
 } from "@/services/content";
+import { getBlogPosts } from "@/services/blog";
 
 export const revalidate = 300;
 
 export default async function HomePage() {
-  const [courses, dates, testimonials, faqItems, partners, siteStats] =
+  const [courses, dates, testimonials, faqItems, partners, siteStats, blogPosts] =
     await Promise.all([
       getCourses(),
       getUpcomingDates(),
       getTestimonials(),
       getFaqItems(),
       getPartners(),
-      getSiteStats()
+      getSiteStats(),
+      getBlogPosts()
     ]);
 
   return (
@@ -50,7 +52,7 @@ export default async function HomePage() {
         <Testimonials items={testimonials} />
         <Contact courses={courses} />
         <FAQ items={faqItems} />
-        <Blog />
+        <Blog posts={blogPosts} />
       </main>
       <Partners items={partners} />
       <Newsletter />

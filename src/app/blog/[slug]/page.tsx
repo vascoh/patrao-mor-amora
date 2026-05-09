@@ -4,15 +4,18 @@ import { notFound } from "next/navigation";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppFloat } from "@/components/shared/WhatsAppFloat";
-import { blogPosts, getPostBySlug } from "@/lib/blog";
+import { getBlogPostBySlug } from "@/services/blog";
+import { blogPosts as staticPosts, getPostBySlug as getStaticPost } from "@/lib/blog";
 import {
   buildArticleJsonLd,
   buildBreadcrumbJsonLd,
   siteConfig
 } from "@/lib/seo";
 
-export function generateStaticParams() {
-  return blogPosts.map((p) => ({ slug: p.slug }));
+export const revalidate = 60;
+
+export async function generateStaticParams() {
+  return staticPosts.map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({
@@ -20,7 +23,7 @@ export async function generateMetadata({
 }: {
   params: { slug: string };
 }): Promise<Metadata> {
-  const post = getPostBySlug(params.slug);
+  const post = (await getBlogPostBySlug(params.slug)) ?? getStaticPost(params.slug);
   if (!post) return { title: "Artigo não encontrado" };
 
   const { url } = siteConfig;
@@ -46,7 +49,7 @@ export async function generateMetadata({
       url: articleUrl,
       siteName: siteConfig.name,
       locale: "pt_PT",
-      publishedTime: post.isoDate,
+      publishedTime: post.published_at,
       authors: [siteConfig.name],
       tags: [post.tag, "náutica", "navegação"]
     },
@@ -59,12 +62,12 @@ export async function generateMetadata({
   };
 }
 
-export default function BlogPostPage({
+export default async function BlogPostPage({
   params
 }: {
   params: { slug: string };
 }) {
-  const post = getPostBySlug(params.slug);
+  const post = (await getBlogPostBySlug(params.slug)) ?? getStaticPost(params.slug);
   if (!post) notFound();
 
   const { url } = siteConfig;
@@ -74,6 +77,10 @@ export default function BlogPostPage({
     { name: "Blog", url: `${url}/blog` },
     { name: post.title, url: `${url}/blog/${post.slug}` }
   ]);
+
+  const dateFormatted = new Date(post.published_at + "T00:00:00").toLocaleDateString("pt-PT", {
+    day: "numeric", month: "long", year: "numeric"
+  });
 
   const paragraphs = post.content.split("\n\n");
 
@@ -118,13 +125,13 @@ export default function BlogPostPage({
                 {post.tag}
               </span>
               <time
-                dateTime={post.isoDate}
+                dateTime={post.published_at}
                 className="text-xs text-[var(--text-subtle)]"
               >
-                📅 {post.date}
+                📅 {dateFormatted}
               </time>
               <span className="text-xs text-[var(--text-subtle)]">
-                ⏱️ {post.read} de leitura
+                ⏱️ {post.read_time} de leitura
               </span>
             </div>
 

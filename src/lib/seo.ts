@@ -1,5 +1,4 @@
-import type { Course, CourseDate, CourseLevel } from "@/types/database";
-import type { BlogPost } from "@/lib/blog";
+import type { Course, CourseDate, CourseLevel, BlogPost } from "@/types/database";
 
 // ─── Site configuration ───────────────────────────────────────────────────────
 
@@ -187,7 +186,7 @@ export function buildArticleJsonLd(post: BlogPost) {
     description: post.excerpt,
     url: articleUrl,
     inLanguage: "pt-PT",
-    datePublished: post.isoDate,
+    datePublished: post.published_at,
     image: `${articleUrl}/opengraph-image`,
     author: {
       "@type": "Organization",

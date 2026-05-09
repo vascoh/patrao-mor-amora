@@ -14,8 +14,10 @@ export default function OGImage({ params }: { params: { slug: string } }) {
     ? post.excerpt.slice(0, 120) + (post.excerpt.length > 120 ? "…" : "")
     : "Artigos sobre navegação, meteorologia e exames DGRM.";
   const tag = post?.tag ?? "Náutica";
-  const date = post?.date ?? "";
-  const read = post?.read ?? "";
+  const date = post?.published_at
+    ? new Date(post.published_at + "T00:00:00").toLocaleDateString("pt-PT", { day: "numeric", month: "short", year: "numeric" })
+    : "";
+  const read = post?.read_time ?? "";
   const icon = post?.icon ?? "📖";
 
   return new ImageResponse(

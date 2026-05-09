@@ -8,6 +8,7 @@ const links = [
   { href: "/admin", label: "📊 Dashboard", exact: true },
   { href: "/admin/cursos", label: "🎓 Cursos" },
   { href: "/admin/datas", label: "📅 Calendário" },
+  { href: "/admin/blog", label: "✍️ Blog" },
   { href: "/admin/leads", label: "📋 Leads" },
   { href: "/admin/inscricoes", label: "✅ Inscrições" }
 ];

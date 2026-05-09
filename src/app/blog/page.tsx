@@ -2,8 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { blogPosts } from "@/lib/blog";
+import { getBlogPosts } from "@/services/blog";
+import { blogPosts as staticPosts } from "@/lib/blog";
 import { buildBreadcrumbJsonLd, siteConfig } from "@/lib/seo";
+
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: "Blog Náutico — Artigos e Dicas de Navegação",
@@ -36,7 +39,10 @@ export const metadata: Metadata = {
   }
 };
 
-export default function BlogPage() {
+export default async function BlogPage() {
+  const dbPosts = await getBlogPosts();
+  const posts = dbPosts.length > 0 ? dbPosts : staticPosts;
+
   const breadcrumbJsonLd = buildBreadcrumbJsonLd([
     { name: "Início", url: siteConfig.url },
     { name: "Blog", url: `${siteConfig.url}/blog` }
@@ -77,42 +83,47 @@ export default function BlogPage() {
           </div>
 
           <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {blogPosts.map((p) => (
-              <article
-                key={p.slug}
-                className="overflow-hidden rounded-[20px] border border-[var(--border)] bg-[var(--bg-card)] shadow-[var(--shadow)] transition hover:-translate-y-1 hover:border-[var(--border-strong)]"
-              >
-                <div className="relative grid h-44 place-items-center bg-gradient-to-br from-[#0a2040] to-[#152e5a] text-5xl">
-                  {p.icon}
-                  <span className="absolute left-4 top-4 inline-flex rounded-full bg-black/40 px-3 py-1 text-xs font-semibold">
-                    {p.tag}
-                  </span>
-                </div>
-                <div className="p-6">
-                  <div className="text-xs text-[var(--text-subtle)]">
-                    <time dateTime={p.isoDate}>📅 {p.date}</time>
-                    {" · "}⏱️ {p.read} de leitura
+            {posts.map((p) => {
+              const dateFormatted = new Date(p.published_at + "T00:00:00").toLocaleDateString("pt-PT", {
+                day: "numeric", month: "short", year: "numeric"
+              });
+              return (
+                <article
+                  key={p.slug}
+                  className="overflow-hidden rounded-[20px] border border-[var(--border)] bg-[var(--bg-card)] shadow-[var(--shadow)] transition hover:-translate-y-1 hover:border-[var(--border-strong)]"
+                >
+                  <div className="relative grid h-44 place-items-center bg-gradient-to-br from-[#0a2040] to-[#152e5a] text-5xl">
+                    {p.icon}
+                    <span className="absolute left-4 top-4 inline-flex rounded-full bg-black/40 px-3 py-1 text-xs font-semibold">
+                      {p.tag}
+                    </span>
                   </div>
-                  <h2 className="mt-2 font-serif text-xl">
+                  <div className="p-6">
+                    <div className="text-xs text-[var(--text-subtle)]">
+                      <time dateTime={p.published_at}>📅 {dateFormatted}</time>
+                      {" · "}⏱️ {p.read_time} de leitura
+                    </div>
+                    <h2 className="mt-2 font-serif text-xl">
+                      <Link
+                        href={`/blog/${p.slug}`}
+                        className="hover:text-[var(--accent)]"
+                      >
+                        {p.title}
+                      </Link>
+                    </h2>
+                    <p className="mt-2 text-sm text-[var(--text-muted)]">
+                      {p.excerpt}
+                    </p>
                     <Link
                       href={`/blog/${p.slug}`}
-                      className="hover:text-[var(--accent)]"
+                      className="mt-4 inline-flex text-sm font-semibold text-[var(--accent)]"
                     >
-                      {p.title}
+                      Ler artigo →
                     </Link>
-                  </h2>
-                  <p className="mt-2 text-sm text-[var(--text-muted)]">
-                    {p.excerpt}
-                  </p>
-                  <Link
-                    href={`/blog/${p.slug}`}
-                    className="mt-4 inline-flex text-sm font-semibold text-[var(--accent)]"
-                  >
-                    Ler artigo →
-                  </Link>
-                </div>
-              </article>
-            ))}
+                  </div>
+                </article>
+              );
+            })}
           </div>
         </section>
       </main>
