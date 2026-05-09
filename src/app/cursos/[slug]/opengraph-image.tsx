@@ -1,6 +1,7 @@
 import { ImageResponse } from "next/og";
 import { getCourseBySlug } from "@/services/courses";
 
+export const dynamic = "force-dynamic";
 export const alt = "Curso Náutico Certificado — Patrão Mor Amora";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";

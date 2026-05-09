@@ -1,5 +1,14 @@
+import { createClient } from "@supabase/supabase-js";
 import { getServerClient } from "@/lib/supabase/server";
-import type { Course } from "@/types/database";
+import type { Course, Database } from "@/types/database";
+
+function getPublicClient() {
+  return createClient<Database>(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    { auth: { autoRefreshToken: false, persistSession: false } }
+  );
+}
 
 export async function getCourses(): Promise<Course[]> {
   const supabase = getServerClient();
@@ -45,7 +54,10 @@ export async function getCourseBySlug(slug: string): Promise<Course | null> {
 }
 
 export async function getCourseSlugs(): Promise<string[]> {
-  const supabase = getServerClient();
+  if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+    return [];
+  }
+  const supabase = getPublicClient();
   const { data } = await supabase
     .from("courses")
     .select("slug")

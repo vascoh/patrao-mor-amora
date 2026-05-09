@@ -77,33 +77,77 @@ export interface Enrollment {
   created_at: string;
 }
 
+export interface Testimonial {
+  id: string;
+  text: string;
+  course: string;
+  author: string;
+  info: string;
+  avatar: string;
+  stars: number;
+  display_order: number;
+  is_active: boolean;
+  created_at: string;
+}
+
+export interface FaqItem {
+  id: string;
+  question: string;
+  answer: string;
+  display_order: number;
+  is_active: boolean;
+  created_at: string;
+}
+
+export interface Partner {
+  id: string;
+  name: string;
+  icon: string;
+  url: string | null;
+  display_order: number;
+  is_active: boolean;
+  created_at: string;
+}
+
+export interface SiteStat {
+  id: string;
+  key: string;
+  value: string;
+  label: string;
+  display_order: number;
+}
+
 export interface CourseDateWithCourse extends CourseDate {
   course: Pick<Course, "id" | "slug" | "name" | "category" | "icon"> | null;
 }
 
+type TableShape<TRow, TInsertRequired extends keyof TRow = never> = {
+  Row: TRow;
+  Insert: Partial<TRow> & Pick<TRow, TInsertRequired>;
+  Update: Partial<TRow>;
+  Relationships: [];
+};
+
 export interface Database {
   public: {
     Tables: {
-      courses: {
-        Row: Course;
-        Insert: Partial<Course> & Pick<Course, "name" | "slug" | "description" | "price" | "duration">;
-        Update: Partial<Course>;
-      };
-      course_dates: {
-        Row: CourseDate;
-        Insert: Partial<CourseDate> & Pick<CourseDate, "course_id" | "start_date">;
-        Update: Partial<CourseDate>;
-      };
-      leads: {
-        Row: Lead;
-        Insert: Partial<Lead> & Pick<Lead, "name" | "email" | "phone">;
-        Update: Partial<Lead>;
-      };
-      enrollments: {
-        Row: Enrollment;
-        Insert: Partial<Enrollment> & Pick<Enrollment, "user_name" | "email" | "phone">;
-        Update: Partial<Enrollment>;
-      };
+      courses: TableShape<Course, "name" | "slug" | "description" | "price" | "duration">;
+      course_dates: TableShape<CourseDate, "course_id" | "start_date">;
+      leads: TableShape<Lead, "name" | "email" | "phone">;
+      enrollments: TableShape<Enrollment, "user_name" | "email" | "phone">;
+      testimonials: TableShape<Testimonial, "text" | "course" | "author" | "info" | "avatar">;
+      faq_items: TableShape<FaqItem, "question" | "answer">;
+      partners: TableShape<Partner, "name">;
+      site_stats: TableShape<SiteStat, "key" | "value" | "label">;
     };
+    Views: { [_ in never]: never };
+    Functions: { [_ in never]: never };
+    Enums: {
+      course_level: CourseLevel;
+      date_status: DateStatus;
+      enrollment_status: EnrollmentStatus;
+      course_category: CourseCategory;
+    };
+    CompositeTypes: { [_ in never]: never };
   };
 }

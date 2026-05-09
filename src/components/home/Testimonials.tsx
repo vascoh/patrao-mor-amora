@@ -4,11 +4,11 @@ import { useEffect, useState } from "react";
 import type { Testimonial } from "@/services/content";
 
 const FALLBACK: Testimonial[] = [
-  { id: "1", text: "Fiz o curso de Patrão Local na Patrão Mor e foi uma experiência fantástica. Os instrutores são extremamente competentes e o método de ensino é muito eficaz. Passei à primeira tentativa!", course: "Patrão Local", author: "João Pinto", info: "Aluno 2024 · Almada", avatar: "JP", stars: 5, display_order: 0 },
-  { id: "2", text: "Escola de excelência. Fiz aqui o Patrão de Costa após ter feito o Local noutro sítio, e a diferença é enorme. A qualidade dos materiais, a dedicação dos professores e o apoio até ao exame são incomparáveis.", course: "Patrão de Costa", author: "Rita Santos", info: "Aluna 2024 · Seixal", avatar: "RS", stars: 5, display_order: 1 },
-  { id: "3", text: "O curso de mergulho PADI foi incrível! A instrutora foi paciente e muito profissional. Sinto-me completamente preparado para mergulhar em qualquer parte do mundo.", course: "PADI Open Water", author: "Miguel Costa", info: "Aluno 2025 · Setúbal", avatar: "MC", stars: 5, display_order: 2 },
-  { id: "4", text: "Sonhei durante anos em obter o Patrão de Alto Mar. A Patrão Mor tornou isso possível com um programa bem estruturado e professores que transmitem conhecimento e paixão pelo mar em igual medida.", course: "Patrão de Alto Mar", author: "Ana Ferreira", info: "Aluna 2023 · Lisboa", avatar: "AF", stars: 5, display_order: 3 },
-  { id: "5", text: "Excelente formação em segurança marítima. Aprendi coisas que nunca aprendi nos outros cursos e que me vão certamente salvar a vida um dia. Muito prático e orientado para o mundo real.", course: "Segurança no Mar", author: "Tiago Lopes", info: "Aluno 2025 · Amora", avatar: "TL", stars: 4, display_order: 4 }
+  { id: "1", text: "Fiz o curso de Patrão Local na Patrão Mor e foi uma experiência fantástica. Os instrutores são extremamente competentes e o método de ensino é muito eficaz. Passei à primeira tentativa!", course: "Patrão Local", author: "João Pinto", info: "Aluno 2024 · Almada", avatar: "JP", stars: 5, display_order: 0, is_active: true, created_at: "" },
+  { id: "2", text: "Escola de excelência. Fiz aqui o Patrão de Costa após ter feito o Local noutro sítio, e a diferença é enorme. A qualidade dos materiais, a dedicação dos professores e o apoio até ao exame são incomparáveis.", course: "Patrão de Costa", author: "Rita Santos", info: "Aluna 2024 · Seixal", avatar: "RS", stars: 5, display_order: 1, is_active: true, created_at: "" },
+  { id: "3", text: "O curso de mergulho PADI foi incrível! A instrutora foi paciente e muito profissional. Sinto-me completamente preparado para mergulhar em qualquer parte do mundo.", course: "PADI Open Water", author: "Miguel Costa", info: "Aluno 2025 · Setúbal", avatar: "MC", stars: 5, display_order: 2, is_active: true, created_at: "" },
+  { id: "4", text: "Sonhei durante anos em obter o Patrão de Alto Mar. A Patrão Mor tornou isso possível com um programa bem estruturado e professores que transmitem conhecimento e paixão pelo mar em igual medida.", course: "Patrão de Alto Mar", author: "Ana Ferreira", info: "Aluna 2023 · Lisboa", avatar: "AF", stars: 5, display_order: 3, is_active: true, created_at: "" },
+  { id: "5", text: "Excelente formação em segurança marítima. Aprendi coisas que nunca aprendi nos outros cursos e que me vão certamente salvar a vida um dia. Muito prático e orientado para o mundo real.", course: "Segurança no Mar", author: "Tiago Lopes", info: "Aluno 2025 · Amora", avatar: "TL", stars: 4, display_order: 4, is_active: true, created_at: "" }
 ];
 
 interface Props {
@@ -25,13 +25,14 @@ export function Testimonials({ items }: Props) {
 
   useEffect(() => {
     if (!hasFocus) return;
+    const len = testimonials.length;
     function onKey(e: KeyboardEvent) {
-      if (e.key === "ArrowLeft") { e.preventDefault(); prev(); }
-      if (e.key === "ArrowRight") { e.preventDefault(); next(); }
+      if (e.key === "ArrowLeft") { e.preventDefault(); setActive((i) => (i - 1 + len) % len); }
+      if (e.key === "ArrowRight") { e.preventDefault(); setActive((i) => (i + 1) % len); }
     }
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [hasFocus]);
+  }, [hasFocus, testimonials.length]);
 
   return (
     <section

@@ -1,6 +1,7 @@
 import { ImageResponse } from "next/og";
 import { getPostBySlug } from "@/lib/blog";
 
+export const dynamic = "force-dynamic";
 export const alt = "Artigo — Blog Náutico Patrão Mor Amora";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";

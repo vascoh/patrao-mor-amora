@@ -1,12 +1,12 @@
 import type { Partner } from "@/services/content";
 
 const FALLBACK: Partner[] = [
-  { id: "1", name: "DGRM", icon: "🏛️", url: null, display_order: 0 },
-  { id: "2", name: "PADI International", icon: "🤿", url: null, display_order: 1 },
-  { id: "3", name: "Marina de Seixal", icon: "⚓", url: null, display_order: 2 },
-  { id: "4", name: "Capitania do Porto de Lisboa", icon: "🚢", url: null, display_order: 3 },
-  { id: "5", name: "IEFP", icon: "🎓", url: null, display_order: 4 },
-  { id: "6", name: "FPN — Federação", icon: "🌊", url: null, display_order: 5 }
+  { id: "1", name: "DGRM", icon: "🏛️", url: null, display_order: 0, is_active: true, created_at: "" },
+  { id: "2", name: "PADI International", icon: "🤿", url: null, display_order: 1, is_active: true, created_at: "" },
+  { id: "3", name: "Marina de Seixal", icon: "⚓", url: null, display_order: 2, is_active: true, created_at: "" },
+  { id: "4", name: "Capitania do Porto de Lisboa", icon: "🚢", url: null, display_order: 3, is_active: true, created_at: "" },
+  { id: "5", name: "IEFP", icon: "🎓", url: null, display_order: 4, is_active: true, created_at: "" },
+  { id: "6", name: "FPN — Federação", icon: "🌊", url: null, display_order: 5, is_active: true, created_at: "" }
 ];
 
 interface Props {

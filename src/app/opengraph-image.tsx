@@ -1,6 +1,7 @@
 import { ImageResponse } from "next/og";
 import { siteConfig } from "@/lib/seo";
 
+export const dynamic = "force-dynamic";
 export const alt = "Patrão Mor Amora — Escola Náutica Certificada DGRM desde 1981";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";

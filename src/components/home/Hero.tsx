@@ -3,10 +3,10 @@ import { whatsappLink } from "@/lib/whatsapp";
 import type { SiteStat } from "@/services/content";
 
 const FALLBACK_STATS: SiteStat[] = [
-  { key: "years_experience", value: "44+", label: "Anos de Experiência", display_order: 0 },
-  { key: "students_trained", value: "2.800+", label: "Alunos Formados", display_order: 1 },
-  { key: "approval_rate", value: "94%", label: "Taxa de Aprovação", display_order: 2 },
-  { key: "certifications", value: "9", label: "Certificações", display_order: 3 }
+  { id: "1", key: "years_experience", value: "44+", label: "Anos de Experiência", display_order: 0 },
+  { id: "2", key: "students_trained", value: "2.800+", label: "Alunos Formados", display_order: 1 },
+  { id: "3", key: "approval_rate", value: "94%", label: "Taxa de Aprovação", display_order: 2 },
+  { id: "4", key: "certifications", value: "9", label: "Certificações", display_order: 3 }
 ];
 
 interface Props {
