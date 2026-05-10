@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { whatsappLink } from "@/lib/whatsapp";
 import type { Course } from "@/types/database";
@@ -82,8 +83,20 @@ const cards = [
 
 export function Contact({ courses }: { courses: Course[] }) {
   return (
-    <section id="contacto" className="section-pad bg-[var(--bg-card)]">
-      <div className="container-page">
+    <section id="contacto" className="section-pad bg-[var(--bg-card)] relative overflow-hidden">
+      {/* Atmospheric hero backdrop — very subtle */}
+      <div className="absolute inset-0 z-0 pointer-events-none select-none" aria-hidden="true">
+        <Image
+          src="/images/hero/sailboat-sunset.jpg"
+          alt=""
+          fill
+          className="object-cover object-[50%_40%] opacity-[0.04]"
+          sizes="100vw"
+          quality={40}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[var(--bg-card)]/50 via-transparent to-[var(--bg-card)]/50" />
+      </div>
+      <div className="container-page relative z-[1]">
 
         {/* Section header */}
         <span className="section-number">06 / Contacto</span>
@@ -118,15 +131,6 @@ export function Contact({ courses }: { courses: Course[] }) {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#03080f]/65 via-[#03080f]/20 to-transparent" />
 
-              {/* 1981 FUNDADA badge */}
-              <div className="absolute bottom-4 left-4 grid size-24 place-items-center rounded-2xl bg-gradient-to-br from-[#c9a84c] to-[#e8c97a] text-center text-[#060e1a] shadow-xl">
-                <div>
-                  <strong className="block font-serif text-2xl font-bold leading-none">1981</strong>
-                  <span className="mt-1 block text-[0.6rem] font-semibold uppercase tracking-[0.12em]">
-                    Fundada
-                  </span>
-                </div>
-              </div>
             </div>
 
             {/* Contact info cards */}

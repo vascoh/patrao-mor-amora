@@ -40,8 +40,20 @@ export function Courses({ courses }: { courses: Course[] }) {
     filter === "all" ? courses : courses.filter((c) => c.category === filter);
 
   return (
-    <section id="cursos" className="section-pad bg-[var(--bg-card)]">
-      <div className="container-page">
+    <section id="cursos" className="section-pad bg-[var(--bg-card)] relative overflow-hidden">
+      {/* Atmospheric nautical backdrop — very subtle */}
+      <div className="absolute inset-0 z-0 pointer-events-none select-none" aria-hidden="true">
+        <Image
+          src="/images/shared/sea-bg.jpg"
+          alt=""
+          fill
+          className="object-cover object-center opacity-[0.035]"
+          sizes="100vw"
+          quality={40}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[var(--bg-card)]/60 via-transparent to-[var(--bg-card)]/60" />
+      </div>
+      <div className="container-page relative z-[1]">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
             <span className="section-number">02 / Cursos</span>

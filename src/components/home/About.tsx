@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const features = [
@@ -51,27 +52,55 @@ export function About() {
     <section id="sobre" className="section-pad">
       <div className="container-page">
 
-        {/* Section header */}
-        <span className="section-number">01 / Sobre Nós</span>
-        <div className="mt-2 flex flex-wrap items-end justify-between gap-6">
-          <div>
-            <h2 className="section-title">
-              Mais de 44 anos
-              <br />
-              <em className="font-light italic text-[var(--accent-light)]">no mar</em>
-            </h2>
-            <div className="gold-divider mt-5" />
-            <p className="section-sub mt-4">
-              A Patrão Mor é uma das escolas náuticas mais antigas e respeitadas
-              de Portugal. Desde 1981 que formamos navegadores com rigor,
-              segurança e paixão pelo mar na margem sul do Tejo.
-            </p>
+        {/* Editorial hero panel — marina photo with section title */}
+        <div className="relative mb-16 overflow-hidden rounded-[20px]">
+          <div className="relative h-72 md:h-[420px]">
+            <Image
+              src="/images/about/marina.jpg"
+              alt="Marina da Patrão Mor Amora — embarcações ao entardecer"
+              fill
+              className="object-cover object-center"
+              sizes="(max-width: 1280px) 100vw, 1280px"
+            />
+            {/* Layered overlays for editorial feel */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#03080f]/95 via-[#03080f]/70 to-[#060e1a]/20" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#03080f]/80 via-transparent to-[#03080f]/35" />
+            {/* Subtle gold shimmer at top */}
+            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--accent)]/40 to-transparent" />
+
+            {/* Section content overlaid on photo */}
+            <div className="absolute inset-0 flex items-center px-8 md:px-14">
+              <div className="max-w-xl">
+                <span className="section-number text-[var(--accent)]/80">01 / Sobre Nós</span>
+                <h2 className="mt-2 section-title">
+                  Mais de 44 anos
+                  <br />
+                  <em className="font-light italic text-[var(--accent-light)]">no mar</em>
+                </h2>
+                <div className="gold-divider mt-5" />
+                <p className="section-sub mt-4">
+                  A Patrão Mor é uma das escolas náuticas mais antigas e respeitadas
+                  de Portugal. Desde 1981 que formamos navegadores com rigor,
+                  segurança e paixão pelo mar na margem sul do Tejo.
+                </p>
+              </div>
+            </div>
+
+            {/* Tag badge — top right */}
+            <div className="absolute right-6 top-6 hidden md:block">
+              <div className="tag">A Nossa História</div>
+            </div>
+
+            {/* Founding year — bottom right */}
+            <div className="absolute bottom-5 right-6 hidden md:flex flex-col items-center gap-0.5 rounded-xl border border-[rgba(201,168,76,0.3)] bg-[rgba(6,14,26,0.82)] px-5 py-3.5 text-center backdrop-blur-sm">
+              <span className="font-serif text-3xl font-bold leading-none text-[var(--accent-light)]">1981</span>
+              <span className="text-[0.58rem] uppercase tracking-[0.14em] text-[var(--text-subtle)]">Fundada</span>
+            </div>
           </div>
-          <div className="tag shrink-0">A Nossa História</div>
         </div>
 
         {/* Stats row — gap-px trick for clean gold separators */}
-        <div className="mt-16 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-[rgba(201,168,76,0.15)] bg-[rgba(201,168,76,0.12)] md:grid-cols-4">
+        <div className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-[rgba(201,168,76,0.15)] bg-[rgba(201,168,76,0.12)] md:grid-cols-4">
           {stats.map((s) => (
             <div
               key={s.value}
