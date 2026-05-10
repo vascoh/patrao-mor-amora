@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import type { FaqItem } from "@/services/content";
 
@@ -23,8 +24,20 @@ export function FAQ({ items }: Props) {
   const [open, setOpen] = useState<string | null>(faqItems[0]?.id ?? null);
 
   return (
-    <section id="faq" className="section-pad">
-      <div className="container-page">
+    <section id="faq" className="section-pad relative overflow-hidden">
+      {/* Subtle nautical backdrop */}
+      <div className="absolute inset-0 z-0 pointer-events-none select-none" aria-hidden="true">
+        <Image
+          src="/images/shared/sea-bg.jpg"
+          alt=""
+          fill
+          className="object-cover object-center opacity-[0.03]"
+          sizes="100vw"
+          quality={40}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[var(--bg)]/80 via-transparent to-[var(--bg)]/80" />
+      </div>
+      <div className="container-page relative z-[1]">
         <div className="mx-auto max-w-xl text-center">
           <span className="section-number">07 / FAQ</span>
           <div className="tag mx-auto">

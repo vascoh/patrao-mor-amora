@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -72,8 +73,20 @@ export function Simulator() {
   const progress = step === 4 ? 100 : ((step - 1) / 3) * 100;
 
   return (
-    <section id="simulador" className="section-pad bg-[var(--bg-card)]">
-      <div className="container-page">
+    <section id="simulador" className="section-pad bg-[var(--bg-card)] relative overflow-hidden">
+      {/* Subtle nautical backdrop */}
+      <div className="absolute inset-0 z-0 pointer-events-none select-none" aria-hidden="true">
+        <Image
+          src="/images/about/marina.jpg"
+          alt=""
+          fill
+          className="object-cover object-center opacity-[0.04]"
+          sizes="100vw"
+          quality={40}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[var(--bg-card)]/60 via-transparent to-[var(--bg-card)]/60" />
+      </div>
+      <div className="container-page relative z-[1]">
         <div className="mx-auto max-w-xl text-center">
           <span className="section-number">04 / Simulador</span>
           <div className="tag mx-auto">🧭 Ferramenta Gratuita</div>

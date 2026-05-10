@@ -62,7 +62,7 @@ export function Footer() {
                 <span className="grid size-6 shrink-0 place-items-center rounded-md border border-[rgba(201,168,76,0.25)] bg-[rgba(201,168,76,0.08)] text-xs text-[var(--accent)]">
                   ⚓
                 </span>
-                <span className="font-medium">Escola Náutica — Oeiras</span>
+                <span className="font-medium">Escola Náutica - Oeiras</span>
                 <svg
                   viewBox="0 0 24 24"
                   fill="none"

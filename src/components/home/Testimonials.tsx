@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import type { Testimonial } from "@/services/content";
 
@@ -37,7 +38,7 @@ export function Testimonials({ items }: Props) {
   return (
     <section
       id="testemunhos"
-      className="section-pad"
+      className="section-pad relative overflow-hidden"
       aria-label="Testemunhos dos alunos"
       onFocus={() => setHasFocus(true)}
       onBlur={(e) => {
@@ -46,13 +47,25 @@ export function Testimonials({ items }: Props) {
         }
       }}
     >
+      {/* Subtle nautical backdrop */}
+      <div className="absolute inset-0 z-0 pointer-events-none select-none" aria-hidden="true">
+        <Image
+          src="/images/hero/sailboat-sunset.jpg"
+          alt=""
+          fill
+          className="object-cover object-[50%_55%] opacity-[0.03]"
+          sizes="100vw"
+          quality={35}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[var(--bg)]/80 via-transparent to-[var(--bg)]/80" />
+      </div>
       <p className="sr-only" aria-live="polite" aria-atomic="true">
         Testemunho {active + 1} de {testimonials.length}:{" "}
         {testimonials[active].author} — {testimonials[active].course}.{" "}
         {testimonials[active].text}
       </p>
 
-      <div className="container-page">
+      <div className="container-page relative z-[1]">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
             <span className="section-number">05 / Testemunhos</span>

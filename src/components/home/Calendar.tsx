@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import type { CourseDateWithCourse, DateStatus } from "@/types/database";
@@ -73,8 +74,20 @@ export function Calendar({ dates }: { dates: CourseDateWithCourse[] }) {
   });
 
   return (
-    <section id="calendario" className="section-pad">
-      <div className="container-page">
+    <section id="calendario" className="section-pad relative overflow-hidden">
+      {/* Subtle nautical backdrop */}
+      <div className="absolute inset-0 z-0 pointer-events-none select-none" aria-hidden="true">
+        <Image
+          src="/images/shared/sea-bg.jpg"
+          alt=""
+          fill
+          className="object-cover object-center opacity-[0.03]"
+          sizes="100vw"
+          quality={40}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[var(--bg)]/70 via-transparent to-[var(--bg)]/70" />
+      </div>
+      <div className="container-page relative z-[1]">
         <span className="section-number">03 / Calendário</span>
         <div className="tag">📅 Próximas Turmas</div>
         <h2 className="section-title mt-3">Calendário de Cursos</h2>
