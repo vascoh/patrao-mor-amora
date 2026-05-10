@@ -24,12 +24,24 @@ export function Navbar() {
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setMounted(true);
-    const onScroll = () => setScrolled(window.scrollY > 80);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  setMounted(true);
+}, []);
+
+useEffect(() => {
+  if (!mounted) return;
+
+  const onScroll = () => {
+    setScrolled(window.scrollY > 80);
+  };
+
+  onScroll();
+
+  window.addEventListener("scroll", onScroll, {
+    passive: true,
+  });
+
+  return () => window.removeEventListener("scroll", onScroll);
+}, [mounted]);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
