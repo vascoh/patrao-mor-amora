@@ -137,10 +137,10 @@ export function Contact({ courses }: { courses: Course[] }) {
                 </div>
                 <div className="text-sm text-[var(--text-muted)]">
                   <p className="font-semibold text-[var(--text)]">Como chegar</p>
-                  <p>Escola Náutica Patrão Mor · Amora, Seixal · 2840</p>
+                  <p>Escola Náutica Patrão Mor Amora· Rua da Mundet, Seixal · 2845-448</p>
                 </div>
                 <a
-                  href="https://maps.google.com/?q=Amora+Seixal+Portugal"
+                  href="https://maps.app.goo.gl/rg6TsBsVPN35XYDXA"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="ml-auto shrink-0 rounded-lg border border-[var(--border)] px-3 py-1.5 text-xs font-semibold text-[var(--accent)] hover:border-[var(--accent)] transition-colors"

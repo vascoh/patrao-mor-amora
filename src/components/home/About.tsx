@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 
 const features = [
@@ -41,8 +40,6 @@ const milestones = [
   { year: "2025", title: "2.800+ Alunos", desc: "Mais de 44 anos de excelência a formar navegadores em Portugal." }
 ];
 
-const MARINA_PHOTO = "/images/about/marina.jpg";
-
 export function About() {
   return (
     <section id="sobre" className="section-pad">
@@ -52,7 +49,7 @@ export function About() {
         <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
 
           {/* Image column */}
-          <div className="relative mx-auto w-full max-w-[480px] pb-6 pr-6 lg:mx-0">
+          <div className="relative mx-auto w-full max-w-[480px] pb-8 pr-8 lg:mx-0">
             {/* Ambient glow */}
             <div
               aria-hidden="true"
@@ -84,19 +81,6 @@ export function About() {
               </div>
             </div>
 
-            {/* Secondary marina photo */}
-            <div className="absolute -bottom-4 -right-4 hidden lg:block">
-              <div className="relative h-28 w-40 overflow-hidden rounded-xl border border-[var(--border-strong)] shadow-[var(--shadow-gold)]">
-                <Image
-                  src={MARINA_PHOTO}
-                  alt="Marina náutica portuguesa"
-                  fill
-                  className="object-cover"
-                  sizes="160px"
-                />
-                <div className="absolute inset-0 bg-[#03080f]/30" />
-              </div>
-            </div>
           </div>
 
           {/* Text column */}
