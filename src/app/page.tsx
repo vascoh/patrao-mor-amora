@@ -1,4 +1,3 @@
-import { AnnouncementBar } from "@/components/layout/AnnouncementBar";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { MobileCTA } from "@/components/layout/MobileCTA";
@@ -41,7 +40,6 @@ export default async function HomePage() {
 
   return (
     <>
-      <AnnouncementBar />
       <Navbar />
       <main id="main-content">
         <Hero stats={siteStats} />

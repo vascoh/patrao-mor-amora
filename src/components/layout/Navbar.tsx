@@ -17,25 +17,25 @@ const links = [
 const MENU_ID = "mobile-nav-menu";
 
 export function Navbar() {
+  const [mounted, setMounted] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const hamburgerRef = useRef<HTMLButtonElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    setMounted(true);
     const onScroll = () => setScrolled(window.scrollY > 80);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Body scroll lock
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [open]);
 
-  // Escape key closes menu
   useEffect(() => {
     if (!open) return;
     function onKey(e: KeyboardEvent) {
@@ -45,7 +45,6 @@ export function Navbar() {
     return () => document.removeEventListener("keydown", onKey);
   }, [open]);
 
-  // Focus management: move focus into menu on open, back to trigger on close
   const wasOpenRef = useRef(false);
   useEffect(() => {
     if (open) {
@@ -58,17 +57,22 @@ export function Navbar() {
     }
   }, [open]);
 
+  // Only apply scroll-dependent styles after mount to prevent SSR/client mismatch
+  const isScrolled = mounted && scrolled;
+
   return (
     <>
       <nav
         aria-label="Navegação principal"
         className={`fixed inset-x-0 top-0 z-[900] transition-all duration-300 ${
-          scrolled
+          isScrolled
             ? "border-b border-[var(--border)] bg-[rgba(6,14,26,0.96)] py-3 shadow-[0_4px_30px_rgba(0,0,0,0.4)] backdrop-blur-xl"
             : "py-5"
         }`}
       >
         <div className="container-page flex items-center justify-between gap-5">
+
+          {/* Logo */}
           <Link href="/" className="flex shrink-0 items-center gap-3">
             <div
               aria-hidden="true"
@@ -86,6 +90,7 @@ export function Navbar() {
             </div>
           </Link>
 
+          {/* Desktop nav links */}
           <div className="hidden items-center gap-1 text-sm font-medium lg:flex">
             {links.map((l) => (
               <Link
@@ -96,40 +101,72 @@ export function Navbar() {
                 {l.label}
               </Link>
             ))}
-            <span aria-hidden="true" className="mx-1 h-4 w-px bg-[var(--border-strong)]" />
+
+            <span aria-hidden="true" className="mx-2 h-4 w-px bg-[var(--border-strong)]" />
+
+            {/* Escola principal — institutional badge */}
             <a
               href="https://www.patraomor.pt/pt/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 rounded-md px-3.5 py-2 text-[var(--accent)] transition hover:text-[var(--accent-light)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
+              className="flex items-center gap-1.5 rounded-md border border-[var(--border)] px-3 py-1.5 text-[0.68rem] font-semibold uppercase tracking-[0.09em] text-[var(--accent)] transition hover:border-[var(--border-strong)] hover:bg-[rgba(201,168,76,0.06)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
             >
-              <span>Oeiras</span>
+              <span aria-hidden="true" className="size-1.5 rounded-full bg-[var(--accent)]" />
+              Escola Oficial · Oeiras
               <svg
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
-                width="11"
-                height="11"
+                width="9"
+                height="9"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="2.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="opacity-60"
+                className="opacity-50"
               >
                 <path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
               </svg>
             </a>
           </div>
 
+          {/* Right side actions */}
           <div className="flex shrink-0 items-center gap-2">
             <ThemeToggle />
+
             <Link
               href="/#contacto"
               className="btn btn-primary hidden md:inline-flex !px-5 !py-2.5 !text-sm"
             >
               Inscrever-me
             </Link>
+
+            {/* Admin — subtle, desktop only */}
+            <Link
+              href="/admin"
+              aria-label="Área de Administração"
+              title="Administração"
+              className="hidden size-8 place-items-center rounded-md text-[var(--text-subtle)] opacity-25 transition hover:opacity-60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)] lg:grid"
+            >
+              <svg
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
+                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+              </svg>
+            </Link>
+
+            {/* Hamburger */}
             <button
               ref={hamburgerRef}
               type="button"
@@ -169,7 +206,7 @@ export function Navbar() {
           role="dialog"
           aria-label="Menu de navegação"
           aria-modal="true"
-          className="fixed inset-0 z-[800] flex flex-col gap-2 bg-[var(--bg)] px-6 pb-10 pt-24 lg:hidden"
+          className="fixed inset-0 z-[800] flex flex-col gap-2 overflow-y-auto bg-[var(--bg)] px-6 pb-10 pt-24 lg:hidden"
         >
           {links.map((l) => (
             <Link
@@ -181,6 +218,8 @@ export function Navbar() {
               {l.label}
             </Link>
           ))}
+
+          {/* Escola oficial — mobile */}
           <a
             href="https://www.patraomor.pt/pt/"
             target="_blank"
@@ -188,7 +227,12 @@ export function Navbar() {
             onClick={() => setOpen(false)}
             className="flex items-center justify-between rounded-[10px] border border-[var(--border-strong)] bg-[rgba(201,168,76,0.06)] px-5 py-4 text-[var(--accent)] transition hover:bg-[rgba(201,168,76,0.12)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
           >
-            <span className="font-medium">Patrão Mor Oeiras</span>
+            <div>
+              <p className="text-[0.62rem] uppercase tracking-[0.1em] text-[var(--text-subtle)]">
+                Escola Oficial · Patrão Mor
+              </p>
+              <p className="font-medium">Oeiras</p>
+            </div>
             <svg
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
@@ -205,12 +249,37 @@ export function Navbar() {
               <path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
             </svg>
           </a>
+
           <Link
             href="/#contacto"
             onClick={() => setOpen(false)}
             className="btn btn-primary mt-4 w-full !justify-center"
           >
             Inscrever-me
+          </Link>
+
+          {/* Admin — bottom of mobile menu, very subtle */}
+          <Link
+            href="/admin"
+            onClick={() => setOpen(false)}
+            className="mt-auto flex items-center gap-2 py-3 text-xs text-[var(--text-subtle)] opacity-35 transition hover:opacity-65 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
+          >
+            <svg
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              width="12"
+              height="12"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
+              <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+            </svg>
+            Administração
           </Link>
         </div>
       ) : null}

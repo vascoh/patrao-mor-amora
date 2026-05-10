@@ -26,7 +26,10 @@ export function ThemeToggle() {
       aria-label="Alternar tema"
       className="grid size-9 place-items-center rounded-md border border-[var(--border)] bg-white/5 text-[var(--text-muted)] transition hover:border-[var(--border-strong)] hover:text-[var(--accent)]"
     >
-      <span aria-hidden>{theme === "dark" ? "☀️" : "🌙"}</span>
+      {/* suppressHydrationWarning prevents mismatch if localStorage theme differs from default */}
+      <span aria-hidden suppressHydrationWarning>
+        {theme === "dark" ? "☀️" : "🌙"}
+      </span>
     </button>
   );
 }
