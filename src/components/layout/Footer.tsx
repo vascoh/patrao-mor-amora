@@ -88,6 +88,14 @@ export function Footer() {
 
         <div className="mt-16 flex flex-wrap items-center justify-between gap-4 border-t border-[var(--border)] py-6 text-xs text-[var(--text-subtle)]">
           <p>© {new Date().getFullYear()} Patrão Mor Amora — Escola Náutica, Lda. Todos os direitos reservados.</p>
+          <a
+            href="https://www.patraomor.pt/pt/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="opacity-40 transition-opacity hover:opacity-70"
+          >
+            Escola Náutica — Oeiras
+          </a>
           <div className="flex flex-wrap gap-5">
             <Link href="/privacidade">Política de Privacidade</Link>
             <Link href="/termos">Termos de Utilização</Link>

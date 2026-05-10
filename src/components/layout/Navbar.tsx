@@ -114,33 +114,6 @@ useEffect(() => {
               </Link>
             ))}
 
-            <span aria-hidden="true" className="mx-2 h-4 w-px bg-[var(--border-strong)]" />
-
-            {/* Escola principal — institutional badge */}
-            <a
-              href="https://www.patraomor.pt/pt/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 rounded-md border border-[var(--border)] px-3 py-1.5 text-[0.68rem] font-semibold uppercase tracking-[0.09em] text-[var(--accent)] transition hover:border-[var(--border-strong)] hover:bg-[rgba(201,168,76,0.06)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
-            >
-              <span aria-hidden="true" className="size-1.5 rounded-full bg-[var(--accent)]" />
-              Escola Oficial · Oeiras
-              <svg
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                width="9"
-                height="9"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="opacity-50"
-              >
-                <path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-              </svg>
-            </a>
           </div>
 
           {/* Right side actions */}
@@ -230,37 +203,6 @@ useEffect(() => {
               {l.label}
             </Link>
           ))}
-
-          {/* Escola oficial — mobile */}
-          <a
-            href="https://www.patraomor.pt/pt/"
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => setOpen(false)}
-            className="flex items-center justify-between rounded-[10px] border border-[var(--border-strong)] bg-[rgba(201,168,76,0.06)] px-5 py-4 text-[var(--accent)] transition hover:bg-[rgba(201,168,76,0.12)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
-          >
-            <div>
-              <p className="text-[0.62rem] uppercase tracking-[0.1em] text-[var(--text-subtle)]">
-                Escola Oficial · Patrão Mor
-              </p>
-              <p className="font-medium">Oeiras</p>
-            </div>
-            <svg
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="opacity-70"
-            >
-              <path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-            </svg>
-          </a>
 
           <Link
             href="/#contacto"

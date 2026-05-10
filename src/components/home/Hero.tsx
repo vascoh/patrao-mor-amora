@@ -94,9 +94,6 @@ export function Hero({ stats }: Props) {
             >
               Contactar via WhatsApp
             </a>
-            <Link href="/#sobre" className="btn btn-outline">
-              Conhecer a Escola
-            </Link>
           </div>
 
           {/* Stats */}

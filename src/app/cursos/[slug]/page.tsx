@@ -200,7 +200,31 @@ export default async function CourseDetailPage({
                     ))}
                   </div>
                 </div>
-              ) : null}
+              ) : (
+                <div className="mt-10 rounded-[16px] border border-[var(--border)] bg-[var(--bg-card)] px-8 py-12 text-center">
+                  <div className="mx-auto mb-5 grid size-12 place-items-center rounded-xl border border-[var(--border-strong)] bg-[rgba(201,168,76,0.06)] text-[var(--accent)]">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="size-5" aria-hidden="true">
+                      <circle cx="12" cy="5" r="3" />
+                      <line x1="12" y1="22" x2="12" y2="8" />
+                      <path d="M5 12H2a10 10 0 0 0 20 0h-3" />
+                    </svg>
+                  </div>
+                  <p className="font-serif text-lg text-[var(--text)]">
+                    Próximas turmas a ser publicadas
+                  </p>
+                  <p className="mt-2 text-sm text-[var(--text-muted)]">
+                    Contacta-nos para saber datas disponíveis
+                  </p>
+                  <a
+                    href={whatsappForCourse(course.name)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-wa mx-auto mt-5 inline-flex"
+                  >
+                    Consultar Datas via WhatsApp
+                  </a>
+                </div>
+              )}
 
               <div className="mt-10 flex flex-wrap gap-3">
                 <a

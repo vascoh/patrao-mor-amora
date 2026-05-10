@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import type { CourseDateWithCourse, DateStatus } from "@/types/database";
-import { whatsappForCourse } from "@/lib/whatsapp";
+import { whatsappForCourse, whatsappLink } from "@/lib/whatsapp";
 
 const MONTHS_PT = [
   "Jan",
@@ -124,9 +124,41 @@ export function Calendar({ dates }: { dates: CourseDateWithCourse[] }) {
 
           <div className="mt-6 grid gap-4">
             {filtered.length === 0 ? (
-              <p className="rounded-md border border-dashed border-[var(--border)] p-6 text-center text-sm text-[var(--text-muted)]">
-                Não há datas que correspondam aos filtros selecionados.
-              </p>
+              dates.length === 0 ? (
+                /* No dates exist at all */
+                <div className="rounded-[20px] border border-[var(--border)] bg-[var(--bg)] px-8 py-14 text-center">
+                  <div className="mx-auto mb-6 grid size-14 place-items-center rounded-xl border border-[var(--border-strong)] bg-[rgba(201,168,76,0.06)] text-[var(--accent)]">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="size-6" aria-hidden="true">
+                      <circle cx="12" cy="5" r="3" />
+                      <line x1="12" y1="22" x2="12" y2="8" />
+                      <path d="M5 12H2a10 10 0 0 0 20 0h-3" />
+                    </svg>
+                  </div>
+                  <p className="font-serif text-xl text-[var(--text)]">
+                    Próximas turmas a ser publicadas
+                  </p>
+                  <p className="mt-2 text-sm text-[var(--text-muted)]">
+                    Contacta-nos para saber datas disponíveis
+                  </p>
+                  <a
+                    href={whatsappLink(
+                      "Olá! Gostaria de saber as próximas datas disponíveis para os cursos."
+                    )}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-wa mx-auto mt-6 inline-flex"
+                  >
+                    Consultar Datas via WhatsApp
+                  </a>
+                </div>
+              ) : (
+                /* Dates exist but filters return nothing */
+                <div className="rounded-[14px] border border-[var(--border)] bg-[var(--bg)] p-8 text-center">
+                  <p className="text-sm text-[var(--text-muted)]">
+                    Nenhuma data corresponde aos filtros seleccionados.
+                  </p>
+                </div>
+              )
             ) : null}
             {filtered.map((d) => {
               const date = new Date(d.start_date);

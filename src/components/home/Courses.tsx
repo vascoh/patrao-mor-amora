@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import type { Course, CourseCategory } from "@/types/database";
-import { whatsappForCourse } from "@/lib/whatsapp";
+import { whatsappForCourse, whatsappLink } from "@/lib/whatsapp";
 
 const FILTERS: { key: CourseCategory | "all"; label: string }[] = [
   { key: "all", label: "Todos" },
@@ -161,7 +161,7 @@ export function Courses({ courses }: { courses: Course[] }) {
                       href={whatsappForCourse(course.name)}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-center text-xs font-semibold text-[#25D366] underline-offset-4 hover:underline"
+                      className="text-center text-xs font-semibold text-[var(--accent)] underline-offset-4 hover:underline"
                     >
                       Perguntar
                     </a>
@@ -172,9 +172,31 @@ export function Courses({ courses }: { courses: Course[] }) {
           ))}
 
           {visible.length === 0 ? (
-            <p className="col-span-full rounded-[12px] border border-[var(--border)] bg-[var(--bg)] p-10 text-center text-sm text-[var(--text-muted)]">
-              Sem cursos nesta categoria de momento.
-            </p>
+            <div className="col-span-full rounded-[20px] border border-[var(--border)] bg-[var(--bg)] px-8 py-14 text-center">
+              <div className="mx-auto mb-6 grid size-14 place-items-center rounded-xl border border-[var(--border-strong)] bg-[rgba(201,168,76,0.06)] text-[var(--accent)]">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="size-6" aria-hidden="true">
+                  <circle cx="12" cy="5" r="3" />
+                  <line x1="12" y1="22" x2="12" y2="8" />
+                  <path d="M5 12H2a10 10 0 0 0 20 0h-3" />
+                </svg>
+              </div>
+              <p className="font-serif text-xl text-[var(--text)]">
+                Próximas turmas a ser publicadas
+              </p>
+              <p className="mt-2 text-sm text-[var(--text-muted)]">
+                Contacta-nos para saber datas disponíveis
+              </p>
+              <a
+                href={whatsappLink(
+                  "Olá! Gostaria de saber as próximas datas disponíveis para os cursos."
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-wa mx-auto mt-6 inline-flex"
+              >
+                Consultar Datas via WhatsApp
+              </a>
+            </div>
           ) : null}
         </div>
       </div>

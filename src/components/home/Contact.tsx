@@ -7,7 +7,12 @@ const email = process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "geral@patraomor.pt";
 
 const cards = [
   {
-    icon: "📍",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="size-5 text-[var(--accent)]">
+        <path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z" />
+        <circle cx="12" cy="10" r="3" />
+      </svg>
+    ),
     title: "Morada",
     body: (
       <>
@@ -20,7 +25,11 @@ const cards = [
     )
   },
   {
-    icon: "📞",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="size-5 text-[var(--accent)]">
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.06 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16z" />
+      </svg>
+    ),
     title: "Telefone / WhatsApp",
     body: (
       <>
@@ -38,7 +47,12 @@ const cards = [
     )
   },
   {
-    icon: "✉️",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="size-5 text-[var(--accent)]">
+        <rect width="20" height="16" x="2" y="4" rx="2" />
+        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+      </svg>
+    ),
     title: "Email",
     body: (
       <>
@@ -49,7 +63,12 @@ const cards = [
     )
   },
   {
-    icon: "⏰",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="size-5 text-[var(--accent)]">
+        <circle cx="12" cy="12" r="10" />
+        <path d="M12 6v6l4 2" />
+      </svg>
+    ),
     title: "Horário",
     body: (
       <>
@@ -65,24 +84,59 @@ export function Contact({ courses }: { courses: Course[] }) {
   return (
     <section id="contacto" className="section-pad bg-[var(--bg-card)]">
       <div className="container-page">
-        <div className="grid gap-10 lg:grid-cols-2">
+
+        {/* Section header */}
+        <span className="section-number">06 / Contacto</span>
+        <div className="mt-2 flex flex-wrap items-end justify-between gap-6">
           <div>
-            <span className="section-number">06 / Contacto</span>
-            <div className="tag">📍 Estamos aqui para ajudar</div>
+            <div className="tag">Estamos aqui para ajudar</div>
             <h2 className="section-title mt-3">Fala Connosco</h2>
             <div className="gold-divider" />
             <p className="section-sub">
               Tens alguma dúvida? Fala connosco — estamos disponíveis de
               segunda a sábado.
             </p>
+          </div>
+        </div>
 
-            <div className="mt-8 grid gap-3 sm:grid-cols-2">
+        <div className="mt-12 grid gap-10 lg:grid-cols-2">
+
+          {/* LEFT — school photo + contact info cards */}
+          <div className="flex flex-col gap-6">
+
+            {/* School photo with 1981 badge */}
+            <div className="relative overflow-hidden rounded-2xl border border-[var(--border)] shadow-[var(--shadow)]">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/foto_patrao_mor_amora.jpg"
+                alt="Escola náutica Patrão Mor Amora — embarcações no porto de Seixal"
+                width={560}
+                height={380}
+                loading="lazy"
+                decoding="async"
+                className="block h-64 w-full object-cover md:h-80"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#03080f]/65 via-[#03080f]/20 to-transparent" />
+
+              {/* 1981 FUNDADA badge */}
+              <div className="absolute bottom-4 left-4 grid size-24 place-items-center rounded-2xl bg-gradient-to-br from-[#c9a84c] to-[#e8c97a] text-center text-[#060e1a] shadow-xl">
+                <div>
+                  <strong className="block font-serif text-2xl font-bold leading-none">1981</strong>
+                  <span className="mt-1 block text-[0.6rem] font-semibold uppercase tracking-[0.12em]">
+                    Fundada
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Contact info cards */}
+            <div className="grid gap-3 sm:grid-cols-2">
               {cards.map((c) => (
                 <div
                   key={c.title}
-                  className="flex gap-3 rounded-[12px] border border-[var(--border)] bg-[var(--bg)] p-4"
+                  className="flex gap-3 rounded-[12px] border border-[var(--border)] bg-[var(--bg)] p-4 transition-colors duration-200 hover:border-[var(--border-strong)]"
                 >
-                  <div className="grid size-10 shrink-0 place-items-center rounded-md bg-[rgba(201,168,76,0.1)] text-lg">
+                  <div className="grid size-10 shrink-0 place-items-center rounded-md bg-[rgba(201,168,76,0.08)]">
                     {c.icon}
                   </div>
                   <div className="text-sm text-[var(--text-muted)]">
@@ -94,12 +148,23 @@ export function Contact({ courses }: { courses: Course[] }) {
                 </div>
               ))}
             </div>
+          </div>
 
-            <div className="mt-8 rounded-[16px] bg-gradient-to-br from-[#1ebe5a] to-[#0f8b3f] p-6 text-white shadow-[0_10px_40px_rgba(37,211,102,0.25)]">
-              <h4 className="font-serif text-2xl">
-                💬 Resposta em minutos via WhatsApp
+          {/* RIGHT — form + WhatsApp CTA */}
+          <div className="flex flex-col gap-6">
+            <ContactForm
+              courseOptions={courses.map((c) => ({
+                value: c.name,
+                label: c.name
+              }))}
+            />
+
+            {/* WhatsApp CTA — navy/gold, no green */}
+            <div className="rounded-[16px] border border-[var(--border-strong)] bg-[var(--bg)] p-6">
+              <h4 className="font-serif text-xl text-[var(--text)]">
+                Resposta em minutos via WhatsApp
               </h4>
-              <p className="mt-1 text-sm text-white/80">
+              <p className="mt-2 text-sm text-[var(--text-muted)]">
                 Envia-nos uma mensagem agora e recebe toda a informação sobre
                 preços, datas e inscrições.
               </p>
@@ -109,54 +174,12 @@ export function Contact({ courses }: { courses: Course[] }) {
                 )}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn mt-4 w-full justify-center border border-white/30 bg-white/15 text-white hover:bg-white/25"
+                className="btn btn-wa mt-4 w-full justify-center"
               >
-                💬 Enviar Mensagem WhatsApp
+                Enviar Mensagem WhatsApp
               </a>
             </div>
-
-            <div className="mt-6 overflow-hidden rounded-[16px] border border-[var(--border)] bg-[var(--bg-card)]">
-              <div className="relative h-48 overflow-hidden">
-                <img
-                  src="/images/shared/sea-bg.jpg"
-                  alt="Localização Patrão Mor Amora"
-                  className="h-full w-full object-cover object-center opacity-50"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#03080f]/95 via-[#03080f]/50 to-[#03080f]/30" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="mb-2 text-3xl">📍</div>
-                    <p className="font-serif text-xl font-light text-white">Amora, Seixal</p>
-                    <p className="mt-1 text-xs uppercase tracking-[0.15em] text-[var(--accent)]">Margem Sul do Tejo</p>
-                  </div>
-                </div>
-              </div>
-              <div className="flex items-center gap-4 p-4">
-                <div className="grid size-10 shrink-0 place-items-center rounded-md bg-[rgba(201,168,76,0.1)] text-lg">
-                  🗺️
-                </div>
-                <div className="text-sm text-[var(--text-muted)]">
-                  <p className="font-semibold text-[var(--text)]">Como chegar</p>
-                  <p>Escola Náutica Patrão Mor Amora· Rua da Mundet, Seixal · 2845-448</p>
-                </div>
-                <a
-                  href="https://maps.app.goo.gl/rg6TsBsVPN35XYDXA"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="ml-auto shrink-0 rounded-lg border border-[var(--border)] px-3 py-1.5 text-xs font-semibold text-[var(--accent)] hover:border-[var(--accent)] transition-colors"
-                >
-                  Abrir Mapa ↗
-                </a>
-              </div>
-            </div>
           </div>
-
-          <ContactForm
-            courseOptions={courses.map((c) => ({
-              value: c.name,
-              label: c.name
-            }))}
-          />
         </div>
       </div>
     </section>
