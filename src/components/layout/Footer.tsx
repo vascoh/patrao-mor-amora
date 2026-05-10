@@ -50,33 +50,26 @@ export function Footer() {
 
             {/* Oeiras school affiliation */}
             <div className="mt-6 pt-5 border-t border-[var(--border)]">
-              <p className="mb-2.5 text-[0.6rem] uppercase tracking-[0.16em] text-[var(--text-subtle)]">
-                Integrado na rede
+              <p className="mb-3 text-[0.57rem] uppercase tracking-[0.18em] text-[var(--text-subtle)] opacity-50">
+                Rede Náutica
               </p>
               <a
                 href="https://www.patraomor.pt"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2.5 rounded-lg border border-[rgba(201,168,76,0.18)] bg-[rgba(201,168,76,0.05)] px-3.5 py-2.5 text-sm text-[var(--text-muted)] transition-all hover:border-[rgba(201,168,76,0.4)] hover:bg-[rgba(201,168,76,0.09)] hover:text-[var(--accent)]"
+                className="group flex w-fit items-center gap-2.5 transition-opacity hover:opacity-100 opacity-70"
               >
-                <span className="grid size-6 shrink-0 place-items-center rounded-md border border-[rgba(201,168,76,0.25)] bg-[rgba(201,168,76,0.08)] text-xs text-[var(--accent)]">
+                <div className="grid size-9 shrink-0 place-items-center rounded-[8px] border border-[rgba(201,168,76,0.14)] bg-gradient-to-br from-[rgba(201,168,76,0.16)] to-[rgba(232,201,122,0.08)] font-serif text-sm text-[rgba(201,168,76,0.55)] transition group-hover:border-[rgba(201,168,76,0.28)] group-hover:text-[rgba(201,168,76,0.75)]">
                   ⚓
-                </span>
-                <span className="font-medium">Escola Náutica - Oeiras</span>
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="ml-auto size-3 opacity-40 transition-opacity group-hover:opacity-80"
-                  aria-hidden="true"
-                >
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                  <polyline points="15 3 21 3 21 9" />
-                  <line x1="10" y1="14" x2="21" y2="3" />
-                </svg>
+                </div>
+                <div className="leading-tight">
+                  <span className="block font-serif text-[0.92rem] font-semibold text-[var(--text-subtle)] transition group-hover:text-[rgba(201,168,76,0.75)]">
+                    Patrão Mor Oeiras
+                  </span>
+                  <span className="text-[0.57rem] uppercase tracking-[0.12em] text-[var(--text-subtle)] opacity-60">
+                    Escola Náutica · DGRM
+                  </span>
+                </div>
               </a>
             </div>
           </div>
