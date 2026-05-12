@@ -27,8 +27,8 @@ function resultFor(use: Use): Result {
     };
   if (use === "profissional")
     return {
-      title: "⚙️ Patrão Local + Segurança",
-      desc: "Para uso profissional, recomendamos o Patrão Local como base mais o curso de Segurança no Mar. Fala connosco para um plano personalizado.",
+      title: "⚙️ Patrão Local + Costa",
+      desc: "Para uso profissional, recomendamos começar com o Patrão Local e evoluir para o Patrão de Costa. Fala connosco para um plano de formação personalizado.",
       slug: "patrao-local"
     };
   return {
@@ -98,7 +98,7 @@ export function Simulator() {
         </div>
 
         <div className="mx-auto mt-10 max-w-2xl rounded-[20px] border border-[var(--border)] bg-[var(--bg)] p-8">
-          <div className="mb-6 h-1.5 w-full overflow-hidden rounded-full bg-white/5">
+          <div className="mb-6 h-1.5 w-full overflow-hidden rounded-full bg-[var(--border)]">
             <div
               className="h-full bg-gradient-to-r from-[#c9a84c] to-[#e8c97a] transition-all"
               style={{ width: `${progress}%` }}

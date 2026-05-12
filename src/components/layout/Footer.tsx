@@ -77,13 +77,11 @@ export function Footer() {
           <FooterCol
             title="Cursos"
             items={[
+              ["/cursos/marinheiro-junior", "Marinheiro Júnior"],
+              ["/cursos/marinheiro", "Marinheiro"],
               ["/cursos/patrao-local", "Patrão Local"],
               ["/cursos/patrao-costa", "Patrão de Costa"],
-              ["/cursos/alto-mar", "Patrão de Alto Mar"],
-              ["/cursos/marinheiro", "Marinheiro"],
-              ["/cursos/vela", "Vela"],
-              ["/cursos/padi", "PADI Open Water"],
-              ["/cursos/seguranca", "Segurança no Mar"]
+              ["/cursos/alto-mar", "Patrão de Alto Mar"]
             ]}
           />
 

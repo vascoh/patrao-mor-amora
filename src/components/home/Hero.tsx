@@ -7,7 +7,7 @@ const FALLBACK_STATS: SiteStat[] = [
   { id: "1", key: "years_experience", value: "44+", label: "Anos de Experiência", display_order: 0 },
   { id: "2", key: "students_trained", value: "2.800+", label: "Alunos Formados", display_order: 1 },
   { id: "3", key: "approval_rate", value: "94%", label: "Taxa de Aprovação", display_order: 2 },
-  { id: "4", key: "certifications", value: "9", label: "Certificações", display_order: 3 }
+  { id: "4", key: "certifications", value: "5", label: "Cursos Disponíveis", display_order: 3 }
 ];
 
 const HERO_PHOTO = "/images/hero/sailboat-sunset.jpg";
@@ -55,7 +55,7 @@ export function Hero({ stats }: Props) {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 rounded-full border border-[var(--border-strong)] bg-[rgba(201,168,76,0.08)] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--accent)]">
             <span className="size-1.5 animate-pulse rounded-full bg-[var(--accent-light)]" />
-            Escola Certificada DGRM · Desde 1981
+            Escola Certificada DGRM · Amora desde 1981
           </div>
 
           {/* Headline */}
@@ -70,13 +70,14 @@ export function Hero({ stats }: Props) {
           </h1>
 
           <p className="mt-5 font-serif text-lg italic text-[var(--accent-light)]/90 md:text-xl">
-            Cursos Náuticos Certificados · Amora, Margem Sul
+            Cursos Náuticos Certificados DGRM · Rio Tejo, Margem Sul
           </p>
 
           <p className="mt-4 max-w-[520px] text-base font-light leading-relaxed text-white/78">
-            A escola náutica de referência na margem sul do Tejo. Formação
-            certificada pela DGRM, instrutores com mais de 20 anos de
-            experiência e a maior taxa de aprovação da região.
+            A escola náutica de referência na margem sul do Tejo. Do
+            Marinheiro Júnior ao Patrão de Alto Mar — formação certificada
+            pela DGRM com instrutores de excelência e a maior taxa de
+            aprovação da região.
           </p>
 
           {/* CTAs */}

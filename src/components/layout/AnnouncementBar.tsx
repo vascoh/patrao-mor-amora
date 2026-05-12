@@ -3,12 +3,12 @@
 import { useEffect, useRef, useState } from "react";
 
 const items = [
-  { strong: "Inscrições Abertas", rest: "— Patrão Local Junho 2025" },
-  { strong: "Últimas 3 vagas", rest: "para Patrão de Costa — Julho 2025" },
-  { strong: "Escola certificada DGRM", rest: "desde 1981" },
+  { strong: "Inscrições Abertas", rest: "— Patrão Local · Amora 2025" },
+  { strong: "Novas turmas disponíveis", rest: "Patrão de Costa — Rio Tejo" },
+  { strong: "Escola certificada DGRM", rest: "na margem sul desde 1981" },
   { strong: "Taxa de aprovação 94%", rest: "acima da média nacional" },
-  { strong: "Novo curso Meteorologia Náutica", rest: "Setembro 2025" },
-  { strong: "Mergulho PADI Open Water", rest: "inscrições abertas" }
+  { strong: "Marinheiro Júnior", rest: "— ideal para jovens navegadores" },
+  { strong: "Patrão de Alto Mar", rest: "— inscrições abertas para 2025" }
 ];
 
 export function AnnouncementBar() {

@@ -9,7 +9,7 @@ const features = [
       </svg>
     ),
     title: "Certificação DGRM",
-    desc: "Escola credenciada pela Direção-Geral de Recursos Naturais, Segurança e Serviços Marítimos — certificados com validade nacional e europeia."
+    desc: "Escola credenciada pela Direção-Geral de Recursos Naturais, Segurança e Serviços Marítimos. Todas as nossas habilitações — do Marinheiro ao Patrão de Alto Mar — têm validade nacional e europeia."
   },
   {
     icon: (
@@ -18,8 +18,8 @@ const features = [
         <path d="M12 8v4l3 3" />
       </svg>
     ),
-    title: "Instrutores Especializados",
-    desc: "Equipa com décadas de experiência no mar e em formação náutica profissional. Método testado, resultados comprovados."
+    title: "Instrutores de Excelência",
+    desc: "Equipa com décadas de experiência no mar e na margem sul do Tejo. Cada aula prática é conduzida em águas reais, com instrutores que vivem o que ensinam."
   },
   {
     icon: (
@@ -29,7 +29,7 @@ const features = [
       </svg>
     ),
     title: "94% de Taxa de Aprovação",
-    desc: "Uma das mais altas taxas de aprovação nos exames DGRM da região, conseguida com método de ensino rigoroso e personalizado."
+    desc: "A taxa de aprovação mais alta da margem sul nos exames DGRM. Conseguida com um método de ensino rigoroso, acompanhamento personalizado e simulações de exame reais."
   }
 ];
 
@@ -79,9 +79,10 @@ export function About() {
                 </h2>
                 <div className="gold-divider mt-5" />
                 <p className="mt-4 max-w-xl text-[1.05rem] font-light text-white/78">
-                  A Patrão Mor é uma das escolas náuticas mais antigas e respeitadas
-                  de Portugal. Desde 1981 que formamos navegadores com rigor,
-                  segurança e paixão pelo mar na margem sul do Tejo.
+                  A Patrão Mor Amora é a escola náutica de referência na margem
+                  sul do Tejo. Filial da histórica Escola Patrão Mor, formamos
+                  navegadores desde 1981 — do Marinheiro Júnior ao Patrão de
+                  Alto Mar — com rigor, paixão e um método comprovado.
                 </p>
               </div>
             </div>

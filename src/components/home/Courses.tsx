@@ -7,12 +7,9 @@ import type { Course, CourseCategory } from "@/types/database";
 import { whatsappForCourse, whatsappLink } from "@/lib/whatsapp";
 
 const FILTERS: { key: CourseCategory | "all"; label: string }[] = [
-  { key: "all", label: "Todos" },
+  { key: "all", label: "Todos os Cursos" },
   { key: "carta", label: "Cartas de Navegador" },
-  { key: "vela", label: "Vela" },
-  { key: "seguranca", label: "Segurança" },
-  { key: "mergulho", label: "Mergulho" },
-  { key: "formacao", label: "Formação" }
+  { key: "formacao", label: "Marinheiro" }
 ];
 
 const CATEGORY_PHOTOS: Record<CourseCategory, string> = {
