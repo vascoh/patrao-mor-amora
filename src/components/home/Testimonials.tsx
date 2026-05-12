@@ -147,7 +147,7 @@ export function Testimonials({ items }: Props) {
             type="button"
             onClick={prev}
             aria-label="Testemunho anterior"
-            className="grid size-11 place-items-center rounded-full border border-[var(--border)] bg-white/5 text-lg transition hover:border-[var(--accent)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
+            className="grid size-11 place-items-center rounded-full border border-[var(--border)] bg-[var(--bg-card)] text-lg transition hover:border-[var(--accent)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
           >
             <span aria-hidden="true">←</span>
           </button>
@@ -162,7 +162,7 @@ export function Testimonials({ items }: Props) {
                 aria-label={`Testemunho de ${item.author}`}
                 onClick={() => setActive(i)}
                 className={`rounded-full transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)] ${
-                  i === active ? "h-2 w-6 bg-[var(--accent)]" : "size-2 bg-white/20"
+                  i === active ? "h-2 w-6 bg-[var(--accent)]" : "size-2 bg-[var(--border-strong)]"
                 }`}
               />
             ))}
@@ -172,7 +172,7 @@ export function Testimonials({ items }: Props) {
             type="button"
             onClick={next}
             aria-label="Próximo testemunho"
-            className="grid size-11 place-items-center rounded-full border border-[var(--border)] bg-white/5 text-lg transition hover:border-[var(--accent)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
+            className="grid size-11 place-items-center rounded-full border border-[var(--border)] bg-[var(--bg-card)] text-lg transition hover:border-[var(--accent)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
           >
             <span aria-hidden="true">→</span>
           </button>

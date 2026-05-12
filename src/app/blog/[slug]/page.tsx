@@ -143,7 +143,7 @@ export default async function BlogPostPage({
               {post.excerpt}
             </p>
 
-            <div className="mt-10 grid h-64 place-items-center rounded-[20px] bg-gradient-to-br from-[#0a2040] to-[#152e5a] text-7xl">
+            <div className="mt-10 grid h-64 place-items-center rounded-[20px] border border-[var(--border)] bg-gradient-to-br from-[var(--bg-card2)] to-[var(--bg)] text-7xl">
               {post.icon}
             </div>
 

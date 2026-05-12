@@ -129,7 +129,7 @@ export function Contact({ courses }: { courses: Course[] }) {
                 decoding="async"
                 className="block h-64 w-full object-cover md:h-80"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#03080f]/65 via-[#03080f]/20 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#03080f]/48 via-[#03080f]/12 to-transparent" />
 
             </div>
 

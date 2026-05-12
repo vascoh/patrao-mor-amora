@@ -23,7 +23,8 @@ export function AnnouncementBar() {
 
   return (
     <div
-      className="relative z-[920] overflow-hidden border-b border-[var(--border)] bg-gradient-to-r from-[#03080f] via-[#0a1628] to-[#03080f] py-2.5"
+      data-theme="dark"
+      className="relative z-[920] overflow-hidden border-b border-[rgba(201,168,76,0.12)] bg-gradient-to-r from-[#03080f] via-[#0a1628] to-[#03080f] py-2.5"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => !prefersReduced.current && setPaused(false)}
     >

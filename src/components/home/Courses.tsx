@@ -64,7 +64,7 @@ export function Courses({ courses }: { courses: Course[] }) {
               mar.
             </p>
           </div>
-          <Link href="/#contacto" className="btn btn-primary">
+          <Link href="/amora#contacto" className="btn btn-primary">
             Pedir Informações
           </Link>
         </div>
@@ -104,8 +104,8 @@ export function Courses({ courses }: { courses: Course[] }) {
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
                 {/* Cinematic overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#03080f]/85 via-[#0a1628]/35 to-transparent" />
-                <div className="absolute inset-0 bg-gradient-to-br from-[#060e1a]/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#03080f]/72 via-[#0a1628]/22 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-br from-[#060e1a]/25 to-transparent" />
 
                 {/* Course icon badge */}
                 <div className="absolute bottom-4 left-4 grid size-11 place-items-center rounded-xl border border-[rgba(201,168,76,0.3)] bg-[rgba(6,14,26,0.7)] text-xl backdrop-blur-sm shadow-lg">

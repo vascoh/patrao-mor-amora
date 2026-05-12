@@ -183,12 +183,12 @@ export function Calendar({ dates }: { dates: CourseDateWithCourse[] }) {
                   key={d.id}
                   className="grid grid-cols-[88px_1fr] items-stretch gap-5 rounded-[14px] border border-[var(--border)] bg-[var(--bg)] p-4 sm:grid-cols-[100px_1fr]"
                 >
-                  <div className="grid place-items-center rounded-md bg-gradient-to-br from-[#0e2040] to-[#152e5a] text-center">
+                  <div className="grid place-items-center rounded-md border border-[var(--border)] bg-[var(--bg-card2)] text-center">
                     <div>
-                      <div className="font-serif text-3xl font-bold text-[var(--accent-light)]">
+                      <div className="font-serif text-3xl font-bold text-[var(--accent)]">
                         {day}
                       </div>
-                      <div className="text-xs uppercase tracking-[0.15em] text-[var(--text-muted)]">
+                      <div className="text-xs uppercase tracking-[0.15em] text-[var(--text-subtle)]">
                         {month}
                       </div>
                     </div>

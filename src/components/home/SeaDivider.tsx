@@ -14,7 +14,7 @@ export function SeaDivider() {
         sizes="100vw"
       />
       {/* Deep overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[#03080f]/90 via-[#03080f]/55 to-[#03080f]/70" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#03080f]/78 via-[#03080f]/44 to-[#03080f]/58" />
 
       {/* Content */}
       <div className="absolute inset-0 flex flex-col items-center justify-center gap-5 px-6 text-center">
@@ -26,7 +26,7 @@ export function SeaDivider() {
           44 anos a formar navegadores em Portugal
         </p>
         <Link
-          href="/#cursos"
+          href="/amora#cursos"
           className="btn btn-primary"
         >
           Iniciar a Minha Jornada

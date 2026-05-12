@@ -6,7 +6,7 @@ export function Footer() {
   const email = process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "geral@patraomor.pt";
 
   return (
-    <footer className="border-t border-[var(--border)] bg-[#03080f] pt-20">
+    <footer data-theme="dark" className="border-t border-[rgba(201,168,76,0.15)] bg-[#03080f] pt-20">
       <div className="container-page">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>

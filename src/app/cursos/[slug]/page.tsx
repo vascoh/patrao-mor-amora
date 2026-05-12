@@ -107,7 +107,7 @@ export default async function CourseDetailPage({
               </li>
               <li aria-hidden="true">›</li>
               <li>
-                <Link href="/#cursos" className="hover:text-[var(--accent)]">
+                <Link href="/amora#cursos" className="hover:text-[var(--accent)]">
                   Cursos
                 </Link>
               </li>
@@ -121,7 +121,7 @@ export default async function CourseDetailPage({
           <div className="mt-6 grid gap-10 lg:grid-cols-[1.3fr_1fr]">
             <div>
               <div className="flex items-center gap-3">
-                <div className="grid size-14 place-items-center rounded-[14px] bg-gradient-to-br from-[#0e2040] to-[#152e5a] text-3xl">
+                <div className="grid size-14 place-items-center rounded-[14px] border border-[var(--border)] bg-[var(--bg-card2)] text-3xl">
                   {course.icon ?? "⚓"}
                 </div>
                 <div>
@@ -235,7 +235,7 @@ export default async function CourseDetailPage({
                 >
                   💬 Perguntar no WhatsApp
                 </a>
-                <Link href="/#contacto" className="btn btn-outline">
+                <Link href="/amora#contacto" className="btn btn-outline">
                   Pedir mais info
                 </Link>
               </div>

@@ -65,6 +65,7 @@ export default async function BlogPage() {
                 <Link href="/amora" className="hover:text-[var(--accent)]">
                   Início
                 </Link>
+
               </li>
               <li aria-hidden="true">›</li>
               <li className="text-[var(--accent)]" aria-current="page">
@@ -92,9 +93,9 @@ export default async function BlogPage() {
                   key={p.slug}
                   className="overflow-hidden rounded-[20px] border border-[var(--border)] bg-[var(--bg-card)] shadow-[var(--shadow)] transition hover:-translate-y-1 hover:border-[var(--border-strong)]"
                 >
-                  <div className="relative grid h-44 place-items-center bg-gradient-to-br from-[#0a2040] to-[#152e5a] text-5xl">
+                  <div className="relative grid h-44 place-items-center bg-gradient-to-br from-[var(--bg-card2)] to-[var(--bg)] text-5xl">
                     {p.icon}
-                    <span className="absolute left-4 top-4 inline-flex rounded-full bg-black/40 px-3 py-1 text-xs font-semibold">
+                    <span className="absolute left-4 top-4 inline-flex rounded-full border border-[var(--border)] bg-[var(--bg-card)] px-3 py-1 text-xs font-semibold text-[var(--text-subtle)]">
                       {p.tag}
                     </span>
                   </div>

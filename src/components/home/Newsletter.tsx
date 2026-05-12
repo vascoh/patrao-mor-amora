@@ -39,19 +39,19 @@ export function Newsletter() {
           sizes="100vw"
         />
       </div>
-      <div className="absolute inset-0 z-[1] bg-gradient-to-r from-[#060e1a]/97 via-[#0a1628]/90 to-[#060e1a]/85" />
+      <div className="absolute inset-0 z-[1] bg-gradient-to-r from-[#060e1a]/85 via-[#0a1628]/76 to-[#060e1a]/72" />
 
       <div className="container-page relative z-[2]">
         <div className="grid items-center gap-8 md:grid-cols-2">
           <div>
             <div className="tag">Novidades Náuticas</div>
-            <h3 className="mt-4 font-serif text-3xl">
+            <h3 className="mt-4 font-serif text-3xl text-white">
               Recebe novidades
               <br />
               <em className="font-light italic text-[var(--accent-light)]">e promoções</em>
             </h3>
             <div className="gold-divider" />
-            <p className="text-sm text-[var(--text-muted)]">
+            <p className="text-sm text-white/72">
               Sê o primeiro a saber das novas datas, ofertas especiais e artigos
               sobre náutica.
             </p>

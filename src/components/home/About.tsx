@@ -63,8 +63,8 @@ export function About() {
               sizes="(max-width: 1280px) 100vw, 1280px"
             />
             {/* Layered overlays for editorial feel */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#03080f]/95 via-[#03080f]/70 to-[#060e1a]/20" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#03080f]/80 via-transparent to-[#03080f]/35" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#03080f]/78 via-[#03080f]/52 to-[#060e1a]/10" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#03080f]/58 via-transparent to-[#03080f]/22" />
             {/* Subtle gold shimmer at top */}
             <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--accent)]/40 to-transparent" />
 
@@ -72,13 +72,13 @@ export function About() {
             <div className="absolute inset-0 flex items-center px-8 md:px-14">
               <div className="max-w-xl">
                 <span className="section-number text-[var(--accent)]/80">01 / Sobre Nós</span>
-                <h2 className="mt-2 section-title">
+                <h2 className="mt-2 section-title text-white">
                   Mais de 44 anos
                   <br />
                   <em className="font-light italic text-[var(--accent-light)]">no mar</em>
                 </h2>
                 <div className="gold-divider mt-5" />
-                <p className="section-sub mt-4">
+                <p className="mt-4 max-w-xl text-[1.05rem] font-light text-white/78">
                   A Patrão Mor é uma das escolas náuticas mais antigas e respeitadas
                   de Portugal. Desde 1981 que formamos navegadores com rigor,
                   segurança e paixão pelo mar na margem sul do Tejo.
@@ -94,7 +94,7 @@ export function About() {
             {/* Founding year — bottom right */}
             <div className="absolute bottom-5 right-6 hidden md:flex flex-col items-center gap-0.5 rounded-xl border border-[rgba(201,168,76,0.3)] bg-[rgba(6,14,26,0.82)] px-5 py-3.5 text-center backdrop-blur-sm">
               <span className="font-serif text-3xl font-bold leading-none text-[var(--accent-light)]">1981</span>
-              <span className="text-[0.58rem] uppercase tracking-[0.14em] text-[var(--text-subtle)]">Fundada</span>
+              <span className="text-[0.58rem] uppercase tracking-[0.14em] text-white/52">Fundada</span>
             </div>
           </div>
         </div>
@@ -133,7 +133,7 @@ export function About() {
         </div>
 
         <div className="mt-10">
-          <Link href="/#cursos" className="btn btn-primary">
+          <Link href="/amora#cursos" className="btn btn-primary">
             Ver Todos os Cursos
           </Link>
         </div>

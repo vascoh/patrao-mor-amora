@@ -36,6 +36,22 @@
   --nav-scrolled-bg: rgba(250, 252, 255, 0.92);
 }
 
+[data-theme="dark"] {
+  --bg: #060e1a;
+  --bg-card: #0a1628;
+  --bg-card2: #0e2040;
+  --text: #f8f9fa;
+  --text-muted: #c8cdd8;
+  --text-subtle: #8892a4;
+  --border: rgba(201, 168, 76, 0.15);
+  --border-strong: rgba(201, 168, 76, 0.35);
+  --accent: #c9a84c;
+  --accent-light: #e8c97a;
+  --shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
+  --shadow-gold: 0 0 40px rgba(201, 168, 76, 0.15);
+  --nav-scrolled-bg: rgba(6, 14, 26, 0.96);
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
