@@ -90,11 +90,11 @@ export function Footer() {
           <FooterCol
             title="Escola"
             items={[
-              ["/#sobre", "Sobre Nós"],
-              ["/#calendario", "Calendário"],
-              ["/#testemunhos", "Testemunhos"],
-              ["/#simulador", "Qual Carta Preciso?"],
-              ["/#blog", "Blog Náutico"],
+              ["/amora#sobre", "Sobre Nós"],
+              ["/amora#calendario", "Calendário"],
+              ["/amora#testemunhos", "Testemunhos"],
+              ["/amora#simulador", "Qual Carta Preciso?"],
+              ["/amora#blog", "Blog Náutico"],
               ["/admin", "🔐 Área Admin"]
             ]}
           />
@@ -105,8 +105,8 @@ export function Footer() {
               [`tel:+351${phone.replace(/\s/g, "")}`, `📞 ${phone}`],
               [whatsappLink(), `💬 WhatsApp`],
               [`mailto:${email}`, `✉️ ${email}`],
-              ["/#contacto", "📍 Amora, Seixal"],
-              ["/#faq", "❓ FAQ"]
+              ["/amora#contacto", "📍 Amora, Seixal"],
+              ["/amora#faq", "❓ FAQ"]
             ]}
           />
         </div>

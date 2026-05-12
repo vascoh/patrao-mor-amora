@@ -20,7 +20,7 @@ export function MobileCTA() {
         show ? "translate-y-0 opacity-100" : "translate-y-24 opacity-0"
       }`}
     >
-      <Link href="/#contacto" className="btn btn-primary !w-full !justify-center">
+      <Link href="/amora#contacto" className="btn btn-primary !w-full !justify-center">
         Inscrever-me
       </Link>
       <a

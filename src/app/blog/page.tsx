@@ -62,7 +62,7 @@ export default async function BlogPage() {
           <nav aria-label="Breadcrumb">
             <ol className="flex items-center gap-1 text-xs text-[var(--text-subtle)]">
               <li>
-                <Link href="/" className="hover:text-[var(--accent)]">
+                <Link href="/amora" className="hover:text-[var(--accent)]">
                   Início
                 </Link>
               </li>

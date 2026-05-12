@@ -5,13 +5,13 @@ import { useEffect, useRef, useState } from "react";
 import { ThemeToggle } from "@/components/shared/ThemeToggle";
 
 const links = [
-  { href: "/#sobre", label: "Sobre" },
-  { href: "/#cursos", label: "Cursos" },
-  { href: "/#calendario", label: "Calendário" },
-  { href: "/#simulador", label: "Qual Carta?" },
-  { href: "/#testemunhos", label: "Alunos" },
-  { href: "/#blog", label: "Blog" },
-  { href: "/#contacto", label: "Contacto" }
+  { href: "/amora#sobre", label: "Sobre" },
+  { href: "/amora#cursos", label: "Cursos" },
+  { href: "/amora#calendario", label: "Calendário" },
+  { href: "/amora#simulador", label: "Qual Carta?" },
+  { href: "/amora#testemunhos", label: "Alunos" },
+  { href: "/amora#blog", label: "Blog" },
+  { href: "/amora#contacto", label: "Contacto" }
 ];
 
 const MENU_ID = "mobile-nav-menu";
@@ -85,7 +85,7 @@ useEffect(() => {
         <div className="container-page flex items-center justify-between gap-5">
 
           {/* Logo */}
-          <Link href="/" className="flex shrink-0 items-center gap-3">
+          <Link href="/amora" className="flex shrink-0 items-center gap-3">
             <div
               aria-hidden="true"
               className="grid size-11 place-items-center rounded-[10px] bg-gradient-to-br from-[#c9a84c] to-[#e8c97a] font-serif text-xl font-bold text-[#060e1a]"
@@ -121,7 +121,7 @@ useEffect(() => {
             <ThemeToggle />
 
             <Link
-              href="/#contacto"
+              href="/amora#contacto"
               className="btn btn-primary hidden md:inline-flex !px-5 !py-2.5 !text-sm"
             >
               Inscrever-me
@@ -205,7 +205,7 @@ useEffect(() => {
           ))}
 
           <Link
-            href="/#contacto"
+            href="/amora#contacto"
             onClick={() => setOpen(false)}
             className="btn btn-primary mt-4 w-full !justify-center"
           >

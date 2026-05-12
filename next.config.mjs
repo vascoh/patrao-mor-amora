@@ -17,8 +17,8 @@ const nextConfig = {
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       // Fonts
       "font-src 'self' https://fonts.gstatic.com",
-      // Images: self + data URIs + supabase + google analytics
-      "img-src 'self' data: blob: https://*.supabase.co https://www.google-analytics.com",
+      // Images: self + data URIs + supabase + analytics + hub external images
+      "img-src 'self' data: blob: https://*.supabase.co https://www.google-analytics.com https://www.patraomor.pt https://patrao-mor-amora.vercel.app",
       // Connect: self + supabase + analytics
       `connect-src 'self' https://*.supabase.co https://www.google-analytics.com${isDev ? " ws://localhost:* http://localhost:*" : ""}`,
       // Frames: none
