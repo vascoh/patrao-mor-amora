@@ -38,8 +38,8 @@ export function Hero({ stats }: Props) {
       </div>
 
       {/* Layered overlays: directional + vertical */}
-      <div className="absolute inset-0 z-[1] bg-gradient-to-r from-[#03080f]/95 via-[#03080f]/72 to-[#060e1a]/15" />
-      <div className="absolute inset-0 z-[1] bg-gradient-to-t from-[#03080f]/70 via-transparent to-[#03080f]/45" />
+      <div className="absolute inset-0 z-[1] bg-gradient-to-r from-[#03080f]/75 via-[#03080f]/52 to-[#060e1a]/8" />
+      <div className="absolute inset-0 z-[1] bg-gradient-to-t from-[#03080f]/50 via-transparent to-[#03080f]/28" />
 
       {/* Bottom blend into next section */}
       <div className="absolute bottom-0 inset-x-0 z-[2] h-56 bg-gradient-to-t from-[var(--bg)] to-transparent" />
@@ -59,7 +59,7 @@ export function Hero({ stats }: Props) {
           </div>
 
           {/* Headline */}
-          <h1 className="mt-6 font-serif text-[3rem] leading-[1.04] md:text-[5rem]">
+          <h1 className="mt-6 font-serif text-[3rem] leading-[1.04] text-white md:text-[5rem]">
             Aprende a<br />
             <em className="font-light italic text-[var(--accent-light)]">
               Navegar
@@ -73,7 +73,7 @@ export function Hero({ stats }: Props) {
             Cursos Náuticos Certificados · Amora, Margem Sul
           </p>
 
-          <p className="mt-4 max-w-[520px] text-base font-light leading-relaxed text-[var(--text-muted)]">
+          <p className="mt-4 max-w-[520px] text-base font-light leading-relaxed text-white/78">
             A escola náutica de referência na margem sul do Tejo. Formação
             certificada pela DGRM, instrutores com mais de 20 anos de
             experiência e a maior taxa de aprovação da região.
@@ -103,7 +103,7 @@ export function Hero({ stats }: Props) {
                 <div className="font-serif text-3xl font-bold text-[var(--accent-light)] md:text-[2.6rem] leading-none">
                   {s.value}
                 </div>
-                <div className="mt-1.5 text-[0.67rem] uppercase tracking-[0.13em] text-[var(--text-subtle)]">
+                <div className="mt-1.5 text-[0.67rem] uppercase tracking-[0.13em] text-white/52">
                   {s.label}
                 </div>
               </div>
@@ -117,7 +117,7 @@ export function Hero({ stats }: Props) {
         aria-hidden="true"
         className="absolute bottom-8 left-1/2 z-[4] hidden -translate-x-1/2 flex-col items-center gap-2 md:flex"
       >
-        <span className="text-[0.58rem] uppercase tracking-[0.22em] text-[var(--text-subtle)]">
+        <span className="text-[0.58rem] uppercase tracking-[0.22em] text-white/48">
           Explorar
         </span>
         <div className="h-10 w-px animate-pulse bg-gradient-to-b from-[var(--accent)]/60 to-transparent" />

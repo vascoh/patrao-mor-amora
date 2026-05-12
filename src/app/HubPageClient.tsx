@@ -44,7 +44,7 @@ export function HubPageClient() {
             </div>
             <div className={styles.cardBody}>
               <span className={styles.cardTag}>Linha de Cascais · Oeiras</span>
-              <h2 className={styles.cardTitle}>Patrão Mor</h2>
+              <h2 className={styles.cardTitle}>Patrão Mor Oeiras</h2>
               <p className={styles.cardDesc}>Aceda ao website principal.</p>
               <span className={styles.cardBtn}>
                 Entrar

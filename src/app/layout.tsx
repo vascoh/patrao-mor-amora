@@ -83,7 +83,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#060e1a",
+  themeColor: "#f4f7fb",
   width: "device-width",
   initialScale: 1
 };
@@ -101,7 +101,7 @@ export default function RootLayout({
   return (
     <html
       lang="pt"
-      data-theme="dark"
+      data-theme="light"
       className={`${outfit.variable} ${cormorant.variable} ${dmMono.variable}`}
       suppressHydrationWarning
     >

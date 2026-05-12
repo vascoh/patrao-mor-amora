@@ -16,19 +16,24 @@
   --accent-light: #e8c97a;
   --shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
   --shadow-gold: 0 0 40px rgba(201, 168, 76, 0.15);
+  --nav-scrolled-bg: rgba(6, 14, 26, 0.96);
 }
 
 [data-theme="light"] {
-  --bg: #f0f4f8;
-  --bg-card: #ffffff;
-  --bg-card2: #e8eef6;
-  --text: #0a1628;
-  --text-muted: #2d3a4e;
-  --text-subtle: #5a6a7e;
-  --border: rgba(10, 22, 40, 0.1);
-  --border-strong: rgba(10, 22, 40, 0.25);
-  --shadow: 0 8px 40px rgba(0, 0, 0, 0.1);
-  --shadow-gold: 0 0 40px rgba(201, 168, 76, 0.1);
+  /* Luminous nautical light — sea haze, Atlantic morning */
+  --bg: #f4f7fb;
+  --bg-card: #fafcff;
+  --bg-card2: #ecf1f8;
+  --text: #0d1e35;
+  --text-muted: #2a3c54;
+  --text-subtle: #5a6e88;
+  --border: rgba(13, 30, 53, 0.09);
+  --border-strong: rgba(13, 30, 53, 0.20);
+  --accent: #b8922e;
+  --accent-light: #d4a83c;
+  --shadow: 0 8px 40px rgba(13, 30, 53, 0.09);
+  --shadow-gold: 0 0 40px rgba(184, 146, 46, 0.12);
+  --nav-scrolled-bg: rgba(250, 252, 255, 0.92);
 }
 
 @layer base {

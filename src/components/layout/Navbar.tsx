@@ -78,7 +78,7 @@ useEffect(() => {
         aria-label="Navegação principal"
         className={`fixed inset-x-0 top-0 z-[900] transition-all duration-300 ${
           isScrolled
-            ? "border-b border-[var(--border)] bg-[rgba(6,14,26,0.96)] py-3 shadow-[0_4px_30px_rgba(0,0,0,0.4)] backdrop-blur-xl"
+            ? "border-b border-[var(--border)] bg-[var(--nav-scrolled-bg)] py-3 shadow-[0_4px_24px_rgba(13,30,53,0.14)] backdrop-blur-xl"
             : "py-5"
         }`}
       >
